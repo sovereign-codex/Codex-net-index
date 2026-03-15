@@ -1,0 +1,8 @@
+links:
+  - source: codex-control-center
+    target: codex_codex_control_center
+    relationship: documented_by
+
+  - source: avot-engine-core
+    target: codex_avot_runtime
+    relationship: documented_by

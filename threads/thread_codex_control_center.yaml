@@ -1,0 +1,15 @@
+thread_id: thread_codex_control_center
+title: Codex Control Center Architecture
+domain: CODEX_INFRASTRUCTURE
+summary: >
+  Development of the orchestration layer responsible for
+  event intake, council debate, AVOT invocation,
+  and governance decision generation.
+linked_repos:
+  - codex-control-center
+  - avot-engine-core
+  - codex-net-index
+linked_codex_entries:
+  - codex_codex_control_center
+status: active
+created: 2026-03-15

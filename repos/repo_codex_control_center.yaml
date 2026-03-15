@@ -1,0 +1,12 @@
+repo_id: codex-control-center
+name: codex-control-center
+purpose: >
+  Orchestration system for Codex-Net.
+  Handles event intake, council debates,
+  AVOT invocation, and decision artifacts.
+classification: orchestrator
+domain: CODEX_INFRASTRUCTURE
+linked_threads:
+  - thread_codex_control_center
+status: active
+created: 2026-03-15

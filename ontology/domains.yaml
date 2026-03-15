@@ -1,0 +1,11 @@
+domains:
+  CODEX_INFRASTRUCTURE:
+    description: Core architecture of Codex-Net.
+  INTELLIGENCE:
+    description: Agent runtime and cognitive systems.
+  GOVERNANCE:
+    description: Council processes and institutional rules.
+  SCIENCE:
+    description: Experimental research and laboratory work.
+  CULTURE:
+    description: Scroll archives and synthesis works.

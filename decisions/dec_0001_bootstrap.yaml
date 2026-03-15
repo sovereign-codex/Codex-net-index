@@ -1,0 +1,15 @@
+decision_id: dec_0001
+summary: >
+  Bootstrap of Codex-Net architecture and creation
+  of the Codex Net Index repository.
+repositories_initialized:
+  - codex-control-center
+  - avot-engine-core
+  - avot-archivist
+  - codex-net-index
+roles:
+  - archivist
+  - integrator
+  - builder
+resolution: consensus
+timestamp: 2026-03-15

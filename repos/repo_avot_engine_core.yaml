@@ -1,0 +1,10 @@
+repo_id: avot-engine-core
+name: avot-engine-core
+purpose: >
+  Runtime engine for executing AVOT scrolls and council scrolls.
+classification: runtime
+domain: INTELLIGENCE
+linked_threads:
+  - thread_avot_architecture
+status: active
+created: 2026-03-15

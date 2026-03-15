@@ -1,0 +1,12 @@
+repo_id: avot-archivist
+name: avot-archivist
+purpose: >
+  Minimal reference chassis for AVOT agents.
+  Demonstrates agent identity, lifecycle awareness,
+  refusal handling, and signal emission.
+classification: agent
+domain: INTELLIGENCE
+linked_threads:
+  - thread_avot_architecture
+status: active
+created: 2026-03-15

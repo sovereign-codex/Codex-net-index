@@ -1,0 +1,13 @@
+assignments:
+  archivist:
+    repos:
+      - codex-net-index
+      - codex-scrolls
+  integrator:
+    threads:
+      - thread_codex_control_center
+      - thread_avot_architecture
+  builder:
+    repos:
+      - codex-control-center
+      - avot-engine-core

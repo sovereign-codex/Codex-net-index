@@ -1,0 +1,13 @@
+thread_id: thread_avot_architecture
+title: AVOT Architecture and Agent Runtime
+domain: INTELLIGENCE
+summary: >
+  Development of the AVOT runtime system,
+  scroll DSL, agent chassis, and council orchestration.
+linked_repos:
+  - avot-engine-core
+  - avot-archivist
+linked_codex_entries:
+  - codex_avot_runtime
+status: active
+created: 2026-03-15

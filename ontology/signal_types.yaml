@@ -1,0 +1,9 @@
+signal_types:
+  scope_refusal:
+    description: Agent refused an action due to scope limits.
+  schema_gap:
+    description: Missing field or structure detected.
+  duplicate_thread:
+    description: Multiple threads covering the same research area.
+  resonance_mismatch:
+    description: Reasoning result failed coherence threshold.

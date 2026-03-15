@@ -1,0 +1,16 @@
+links:
+  - source: thread_codex_control_center
+    target: codex-control-center
+    relationship: implemented_by
+
+  - source: thread_codex_control_center
+    target: codex-net-index
+    relationship: recorded_in
+
+  - source: thread_avot_architecture
+    target: avot-engine-core
+    relationship: implemented_by
+
+  - source: thread_avot_architecture
+    target: avot-archivist
+    relationship: prototype
