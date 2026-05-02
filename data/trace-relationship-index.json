@@ -1,16 +1,9 @@
 {
-  "generated_at": "2026-05-02T22:23:13Z",
-  "source": {
-    "repo": "sovereign-codex/AVOT-TRACE",
-    "trace_index_url": "https://raw.githubusercontent.com/sovereign-codex/AVOT-TRACE/main/data/trace-index.json"
-  },
+  "generated_at": "2026-05-02T22:58:09Z",
   "counts": {
     "traces": 5,
-    "relationships": 10,
-    "repo_relationships": 5,
-    "ontology_relationships": 0,
-    "avot_links": 5,
-    "thread_links": 0
+    "relationships": 5,
+    "causal_relationships": 6
   },
   "traces": [
     {
@@ -20,7 +13,16 @@
       "status": "started",
       "timestamp": "2026-05-02T18:30:38Z",
       "context": {},
-      "ontology": {}
+      "ontology": {},
+      "events": [
+        {
+          "event_id": "25258858807-1-1777746638",
+          "timestamp": "2026-05-02T18:30:38Z",
+          "repo": "sovereign-codex/AVOT-ARCHIVIST",
+          "workflow": "engine-runner",
+          "status": "started"
+        }
+      ]
     },
     {
       "trace_id": "trc_control-center-test",
@@ -29,7 +31,16 @@
       "status": "result_stored",
       "timestamp": "2026-05-02T18:31:17Z",
       "context": {},
-      "ontology": {}
+      "ontology": {},
+      "events": [
+        {
+          "event_id": "25258872444-1-1777746677",
+          "timestamp": "2026-05-02T18:31:17Z",
+          "repo": "sovereign-codex/Codex-control-center",
+          "workflow": "control-center-result-receiver",
+          "status": "result_stored"
+        }
+      ]
     },
     {
       "trace_id": "trc_interlink-test",
@@ -38,7 +49,16 @@
       "status": "decision_created:control-center",
       "timestamp": "2026-05-02T18:30:47Z",
       "context": {},
-      "ontology": {}
+      "ontology": {},
+      "events": [
+        {
+          "event_id": "25258861744-1-1777746647",
+          "timestamp": "2026-05-02T18:30:47Z",
+          "repo": "sovereign-codex/Codex-control-center",
+          "workflow": "control-center-router",
+          "status": "decision_created:control-center"
+        }
+      ]
     },
     {
       "trace_id": "trc_test-signal",
@@ -47,7 +67,16 @@
       "status": "result_stored",
       "timestamp": "2026-05-02T18:31:27Z",
       "context": {},
-      "ontology": {}
+      "ontology": {},
+      "events": [
+        {
+          "event_id": "25258876545-1-1777746687",
+          "timestamp": "2026-05-02T18:31:27Z",
+          "repo": "sovereign-codex/Codex-control-center",
+          "workflow": "control-center-result-receiver",
+          "status": "result_stored"
+        }
+      ]
     },
     {
       "trace_id": "trc_test-trigger",
@@ -56,7 +85,16 @@
       "status": "no_route_found",
       "timestamp": "2026-05-02T18:31:02Z",
       "context": {},
-      "ontology": {}
+      "ontology": {},
+      "events": [
+        {
+          "event_id": "25258865417-1-1777746662",
+          "timestamp": "2026-05-02T18:31:02Z",
+          "repo": "sovereign-codex/Codex-control-center",
+          "workflow": "cross-repo-dispatcher",
+          "status": "no_route_found"
+        }
+      ]
     }
   ]
 }

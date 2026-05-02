@@ -1,0 +1,109 @@
+{
+  "generated_at": "2026-05-02T22:58:09Z",
+  "schema": "codex.relationships.v1",
+  "generator": "scripts/build_relationships.py",
+  "relationships": [
+    {
+      "id": "cause_trc_interlink-test__possibly_related_sequence__trc_test-trigger",
+      "type": "possibly_related_sequence",
+      "from": {
+        "kind": "trace",
+        "id": "trc_interlink-test"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "trc_test-trigger"
+      },
+      "evidence": {
+        "reason": "same_repo",
+        "delta": 15
+      },
+      "confidence": 0.55
+    },
+    {
+      "id": "cause_trc_interlink-test__possibly_related_sequence__trc_control-center-test",
+      "type": "possibly_related_sequence",
+      "from": {
+        "kind": "trace",
+        "id": "trc_interlink-test"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "trc_control-center-test"
+      },
+      "evidence": {
+        "reason": "same_repo",
+        "delta": 30
+      },
+      "confidence": 0.55
+    },
+    {
+      "id": "cause_trc_interlink-test__possibly_related_sequence__trc_test-signal",
+      "type": "possibly_related_sequence",
+      "from": {
+        "kind": "trace",
+        "id": "trc_interlink-test"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "trc_test-signal"
+      },
+      "evidence": {
+        "reason": "same_repo",
+        "delta": 40
+      },
+      "confidence": 0.55
+    },
+    {
+      "id": "cause_trc_test-trigger__possibly_related_sequence__trc_control-center-test",
+      "type": "possibly_related_sequence",
+      "from": {
+        "kind": "trace",
+        "id": "trc_test-trigger"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "trc_control-center-test"
+      },
+      "evidence": {
+        "reason": "same_repo",
+        "delta": 15
+      },
+      "confidence": 0.55
+    },
+    {
+      "id": "cause_trc_test-trigger__possibly_related_sequence__trc_test-signal",
+      "type": "possibly_related_sequence",
+      "from": {
+        "kind": "trace",
+        "id": "trc_test-trigger"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "trc_test-signal"
+      },
+      "evidence": {
+        "reason": "same_repo",
+        "delta": 25
+      },
+      "confidence": 0.55
+    },
+    {
+      "id": "cause_trc_control-center-test__possibly_related_sequence__trc_test-signal",
+      "type": "possibly_related_sequence",
+      "from": {
+        "kind": "trace",
+        "id": "trc_control-center-test"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "trc_test-signal"
+      },
+      "evidence": {
+        "reason": "same_repo",
+        "delta": 10
+      },
+      "confidence": 0.55
+    }
+  ]
+}

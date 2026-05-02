@@ -1,8 +1,7 @@
 {
-  "generated_at": "2026-05-02T22:23:13Z",
-  "source": "AVOT-TRACE",
-  "generator": "build_relationships.py",
+  "generated_at": "2026-05-02T22:58:09Z",
   "schema": "codex.relationships.v1",
+  "generator": "scripts/build_relationships.py",
   "relationships": [
     {
       "id": "rel_engine_25258856233__observed_in_repo__avot-archivist",
@@ -13,8 +12,7 @@
       },
       "to": {
         "kind": "repo",
-        "id": "sovereign-codex/AVOT-ARCHIVIST",
-        "slug": "avot-archivist"
+        "id": "sovereign-codex/AVOT-ARCHIVIST"
       },
       "evidence": {
         "repo": "sovereign-codex/AVOT-ARCHIVIST",
@@ -33,8 +31,7 @@
       },
       "to": {
         "kind": "repo",
-        "id": "sovereign-codex/Codex-control-center",
-        "slug": "codex-control-center"
+        "id": "sovereign-codex/Codex-control-center"
       },
       "evidence": {
         "repo": "sovereign-codex/Codex-control-center",
@@ -53,8 +50,7 @@
       },
       "to": {
         "kind": "repo",
-        "id": "sovereign-codex/Codex-control-center",
-        "slug": "codex-control-center"
+        "id": "sovereign-codex/Codex-control-center"
       },
       "evidence": {
         "repo": "sovereign-codex/Codex-control-center",
@@ -73,8 +69,7 @@
       },
       "to": {
         "kind": "repo",
-        "id": "sovereign-codex/Codex-control-center",
-        "slug": "codex-control-center"
+        "id": "sovereign-codex/Codex-control-center"
       },
       "evidence": {
         "repo": "sovereign-codex/Codex-control-center",
@@ -93,8 +88,7 @@
       },
       "to": {
         "kind": "repo",
-        "id": "sovereign-codex/Codex-control-center",
-        "slug": "codex-control-center"
+        "id": "sovereign-codex/Codex-control-center"
       },
       "evidence": {
         "repo": "sovereign-codex/Codex-control-center",
