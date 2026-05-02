@@ -1,0 +1,108 @@
+{
+  "generated_at": "2026-05-02T21:48:00Z",
+  "source": "AVOT-TRACE",
+  "generator": "build_relationships.py",
+  "schema": "codex.relationships.v1",
+  "relationships": [
+    {
+      "id": "rel_engine_25258856233__associated_with_avot__avot-archivist",
+      "type": "associated_with_avot",
+      "from": {
+        "kind": "trace",
+        "id": "engine_25258856233"
+      },
+      "to": {
+        "kind": "avot",
+        "id": "avot-archivist",
+        "slug": "avot-archivist"
+      },
+      "evidence": {
+        "repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "workflow": "engine-runner",
+        "status": "started",
+        "timestamp": "2026-05-02T18:30:38Z"
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "rel_trc_control-center-test__associated_with_avot__avot-engine",
+      "type": "associated_with_avot",
+      "from": {
+        "kind": "trace",
+        "id": "trc_control-center-test"
+      },
+      "to": {
+        "kind": "avot",
+        "id": "avot-engine",
+        "slug": "avot-engine"
+      },
+      "evidence": {
+        "repo": "sovereign-codex/Codex-control-center",
+        "workflow": "control-center-result-receiver",
+        "status": "result_stored",
+        "timestamp": "2026-05-02T18:31:17Z"
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "rel_trc_interlink-test__associated_with_avot__control-center",
+      "type": "associated_with_avot",
+      "from": {
+        "kind": "trace",
+        "id": "trc_interlink-test"
+      },
+      "to": {
+        "kind": "avot",
+        "id": "control-center",
+        "slug": "control-center"
+      },
+      "evidence": {
+        "repo": "sovereign-codex/Codex-control-center",
+        "workflow": "control-center-router",
+        "status": "decision_created:control-center",
+        "timestamp": "2026-05-02T18:30:47Z"
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "rel_trc_test-signal__associated_with_avot__avot-engine",
+      "type": "associated_with_avot",
+      "from": {
+        "kind": "trace",
+        "id": "trc_test-signal"
+      },
+      "to": {
+        "kind": "avot",
+        "id": "avot-engine",
+        "slug": "avot-engine"
+      },
+      "evidence": {
+        "repo": "sovereign-codex/Codex-control-center",
+        "workflow": "control-center-result-receiver",
+        "status": "result_stored",
+        "timestamp": "2026-05-02T18:31:27Z"
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "rel_trc_test-trigger__associated_with_avot__control-center",
+      "type": "associated_with_avot",
+      "from": {
+        "kind": "trace",
+        "id": "trc_test-trigger"
+      },
+      "to": {
+        "kind": "avot",
+        "id": "control-center",
+        "slug": "control-center"
+      },
+      "evidence": {
+        "repo": "sovereign-codex/Codex-control-center",
+        "workflow": "cross-repo-dispatcher",
+        "status": "no_route_found",
+        "timestamp": "2026-05-02T18:31:02Z"
+      },
+      "confidence": 0.75
+    }
+  ]
+}

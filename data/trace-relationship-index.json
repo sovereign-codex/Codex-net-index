@@ -1,0 +1,62 @@
+{
+  "generated_at": "2026-05-02T21:48:00Z",
+  "source": {
+    "repo": "sovereign-codex/AVOT-TRACE",
+    "trace_index_url": "https://raw.githubusercontent.com/sovereign-codex/AVOT-TRACE/main/data/trace-index.json"
+  },
+  "counts": {
+    "traces": 5,
+    "relationships": 10,
+    "repo_relationships": 5,
+    "ontology_relationships": 0,
+    "avot_links": 5,
+    "thread_links": 0
+  },
+  "traces": [
+    {
+      "trace_id": "engine_25258856233",
+      "repo": "sovereign-codex/AVOT-ARCHIVIST",
+      "workflow": "engine-runner",
+      "status": "started",
+      "timestamp": "2026-05-02T18:30:38Z",
+      "context": {},
+      "ontology": {}
+    },
+    {
+      "trace_id": "trc_control-center-test",
+      "repo": "sovereign-codex/Codex-control-center",
+      "workflow": "control-center-result-receiver",
+      "status": "result_stored",
+      "timestamp": "2026-05-02T18:31:17Z",
+      "context": {},
+      "ontology": {}
+    },
+    {
+      "trace_id": "trc_interlink-test",
+      "repo": "sovereign-codex/Codex-control-center",
+      "workflow": "control-center-router",
+      "status": "decision_created:control-center",
+      "timestamp": "2026-05-02T18:30:47Z",
+      "context": {},
+      "ontology": {}
+    },
+    {
+      "trace_id": "trc_test-signal",
+      "repo": "sovereign-codex/Codex-control-center",
+      "workflow": "control-center-result-receiver",
+      "status": "result_stored",
+      "timestamp": "2026-05-02T18:31:27Z",
+      "context": {},
+      "ontology": {}
+    },
+    {
+      "trace_id": "trc_test-trigger",
+      "repo": "sovereign-codex/Codex-control-center",
+      "workflow": "cross-repo-dispatcher",
+      "status": "no_route_found",
+      "timestamp": "2026-05-02T18:31:02Z",
+      "context": {},
+      "ontology": {}
+    }
+  ]
+}

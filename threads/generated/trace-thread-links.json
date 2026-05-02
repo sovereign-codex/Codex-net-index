@@ -1,0 +1,7 @@
+{
+  "generated_at": "2026-05-02T21:48:00Z",
+  "source": "AVOT-TRACE",
+  "generator": "build_relationships.py",
+  "schema": "codex.relationships.v1",
+  "relationships": []
+}
