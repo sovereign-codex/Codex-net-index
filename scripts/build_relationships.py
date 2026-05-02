@@ -2,15 +2,11 @@
 """
 Build automatic relationship artifacts for Codex Net Index.
 
-Purpose:
-- Pull raw trace memory from AVOT-TRACE.
-- Preserve trace truth as external evidence, not as rewritten history.
-- Generate interpreted relationship files inside Codex-net-index.
-
 Outputs:
 - relationships/generated/trace-relationships.json
 - relationships/generated/repo-relationships.json
 - relationships/generated/ontology-relationships.json
+- relationships/generated/causal-relationships.json
 - avot-links/generated/trace-avot-links.json
 - threads/generated/trace-thread-links.json
 - data/trace-relationship-index.json
@@ -41,13 +37,13 @@ TRACE_DETAIL_BASE_URL = os.environ.get(
 
 OUT_DIR = Path(os.environ.get("CODEX_INDEX_ROOT", "."))
 
-GENERATOR_NAME = "build_relationships.py"
 SCHEMA_VERSION = "codex.relationships.v1"
+GENERATOR_NAME = "scripts/build_relationships.py"
 
 
-# -------------------------
+# -----------------------
 # Helpers
-# -------------------------
+# -----------------------
 
 def now_iso() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
@@ -60,6 +56,27 @@ def slug(value: str) -> str:
     value = re.sub(r"-+", "-", value).strip("-")
     return value or "unknown"
 
+
+def parse_time(value: str) -> Optional[datetime]:
+    if not value:
+        return None
+    try:
+        return datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+
+
+def seconds_between(a: str, b: str) -> Optional[int]:
+    ta = parse_time(a)
+    tb = parse_time(b)
+    if not ta or not tb:
+        return None
+    return int((tb - ta).total_seconds())
+
+
+# -----------------------
+# IO
+# -----------------------
 
 def read_json_url(url: str) -> Any:
     req = urllib.request.Request(
@@ -76,81 +93,60 @@ def safe_read_trace_detail(trace_id: str) -> Optional[Dict[str, Any]]:
         data = read_json_url(url)
         if isinstance(data, dict):
             return data
-    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
+    except Exception as exc:
         print(f"[warn] could not read detail for {trace_id}: {exc}", file=sys.stderr)
     return None
 
 
+# -----------------------
+# Normalization
+# -----------------------
+
 def normalize_index(raw: Any) -> List[Dict[str, Any]]:
     if isinstance(raw, list):
-        return [item for item in raw if isinstance(item, dict)]
+        return [x for x in raw if isinstance(x, dict)]
+
     if isinstance(raw, dict):
         for key in ("traces", "items", "entries"):
-            value = raw.get(key)
-            if isinstance(value, list):
-                return [item for item in value if isinstance(item, dict)]
+            val = raw.get(key)
+            if isinstance(val, list):
+                return [x for x in val if isinstance(x, dict)]
+
         if "trace_id" in raw:
             return [raw]
+
     return []
 
 
 def latest_event(events: Iterable[Dict[str, Any]]) -> Dict[str, Any]:
-    candidates = [event for event in events if isinstance(event, dict)]
-    if not candidates:
+    items = [e for e in events if isinstance(e, dict)]
+    if not items:
         return {}
-    return sorted(candidates, key=lambda e: e.get("timestamp", ""))[-1]
+    return sorted(items, key=lambda e: e.get("timestamp", ""))[-1]
 
-
-# -------------------------
-# Core merge logic
-# -------------------------
 
 def merge_trace(index_item: Dict[str, Any], detail: Optional[Dict[str, Any]]) -> Dict[str, Any]:
     trace_id = index_item.get("trace_id") or (detail or {}).get("trace_id") or "unknown-trace"
 
     events = []
     if detail and isinstance(detail.get("events"), list):
-        events = [event for event in detail["events"] if isinstance(event, dict)]
+        events = [e for e in detail["events"] if isinstance(e, dict)]
 
     last = latest_event(events)
 
-    context: Dict[str, Any] = {}
-    ontology: Dict[str, Any] = {}
+    context = {}
+    ontology = {}
 
-    for source in (index_item, detail or {}, last):
-        if isinstance(source.get("context"), dict):
-            context.update(source["context"])
-        if isinstance(source.get("ontology"), dict):
-            ontology.update(source["ontology"])
+    for src in (index_item, detail or {}, last):
+        if isinstance(src.get("context"), dict):
+            context.update(src["context"])
+        if isinstance(src.get("ontology"), dict):
+            ontology.update(src["ontology"])
 
-    repo = (
-        index_item.get("last_repo")
-        or index_item.get("repo")
-        or last.get("repo")
-        or context.get("repo")
-        or "unknown-repo"
-    )
-
-    workflow = (
-        index_item.get("last_workflow")
-        or index_item.get("workflow")
-        or last.get("workflow")
-        or "unknown-workflow"
-    )
-
-    status = (
-        index_item.get("last_status")
-        or index_item.get("status")
-        or last.get("status")
-        or "unknown-status"
-    )
-
-    timestamp = (
-        index_item.get("last_timestamp")
-        or index_item.get("timestamp")
-        or last.get("timestamp")
-        or ""
-    )
+    repo = index_item.get("last_repo") or index_item.get("repo") or last.get("repo") or context.get("repo") or "unknown-repo"
+    workflow = index_item.get("last_workflow") or index_item.get("workflow") or last.get("workflow") or "unknown-workflow"
+    status = index_item.get("last_status") or index_item.get("status") or last.get("status") or "unknown-status"
+    timestamp = index_item.get("last_timestamp") or index_item.get("timestamp") or last.get("timestamp") or ""
 
     return {
         "trace_id": trace_id,
@@ -158,220 +154,157 @@ def merge_trace(index_item: Dict[str, Any], detail: Optional[Dict[str, Any]]) ->
         "workflow": workflow,
         "status": status,
         "timestamp": timestamp,
-        "events": events,
         "context": context,
         "ontology": ontology,
-        "raw_index": index_item,
+        "events": events,
     }
 
 
-# -------------------------
-# Relationship builders
-# -------------------------
+# -----------------------
+# Relationship Builders
+# -----------------------
 
-def relationship(
-    rel_type: str,
-    trace_id: str,
-    to_kind: str,
-    to_id: str,
-    evidence: Dict[str, Any],
-    confidence: float = 0.85,
-) -> Dict[str, Any]:
-
-    clean_to = slug(to_id)
-
+def relationship(rel_type, trace_id, to_kind, to_id, evidence, confidence=0.8):
     return {
-        "id": f"rel_{slug(trace_id)}__{rel_type}__{clean_to}",
+        "id": f"rel_{slug(trace_id)}__{rel_type}__{slug(to_id)}",
         "type": rel_type,
         "from": {"kind": "trace", "id": trace_id},
-        "to": {"kind": to_kind, "id": to_id, "slug": clean_to},
+        "to": {"kind": to_kind, "id": to_id},
         "evidence": evidence,
         "confidence": confidence,
     }
 
 
-def dedupe(rels: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+def causal_relationship(rel_type, a, b, evidence, confidence):
+    return {
+        "id": f"cause_{slug(a['trace_id'])}__{rel_type}__{slug(b['trace_id'])}",
+        "type": rel_type,
+        "from": {"kind": "trace", "id": a["trace_id"]},
+        "to": {"kind": "trace", "id": b["trace_id"]},
+        "evidence": evidence,
+        "confidence": confidence,
+    }
+
+
+# -----------------------
+# Dedupe
+# -----------------------
+
+def dedupe(rels):
     seen = set()
     out = []
-
     for r in rels:
-        key = (
-            r.get("type"),
-            r.get("from", {}).get("id"),
-            r.get("to", {}).get("id"),
-        )
-
+        key = (r["type"], r["from"]["id"], r["to"]["id"])
         if key not in seen:
             seen.add(key)
             out.append(r)
-
     return out
 
 
-def infer_avot(repo: str, workflow: str, status: str) -> Optional[str]:
-    text = " ".join([repo or "", workflow or "", status or ""]).lower()
+# -----------------------
+# Causal Engine
+# -----------------------
 
-    if "archivist" in text:
-        return "avot-archivist"
-    if "engine" in text or "receiver" in text or "execution" in text:
-        return "avot-engine"
-    if "trace" in text:
-        return "avot-trace"
-    if "control" in text or "router" in text or "dispatcher" in text:
-        return "control-center"
+def build_causal_relationships(traces):
+    rels = []
 
-    return None
+    traces = [t for t in traces if t["timestamp"]]
+    traces.sort(key=lambda t: t["timestamp"])
+
+    for i, a in enumerate(traces):
+        for b in traces[i+1:i+6]:
+
+            delta = seconds_between(a["timestamp"], b["timestamp"])
+            if delta is None or delta < 0:
+                continue
+
+            if delta > 900:
+                break
+
+            if a["trace_id"] == b["trace_id"]:
+                rels.append(causal_relationship(
+                    "same_trace_lifecycle",
+                    a, b,
+                    {"reason": "same_trace", "delta": delta},
+                    0.95
+                ))
+                continue
+
+            if a["repo"] == b["repo"] and delta < 300:
+                rels.append(causal_relationship(
+                    "possibly_related_sequence",
+                    a, b,
+                    {"reason": "same_repo", "delta": delta},
+                    0.55
+                ))
+
+    return dedupe(rels)
 
 
-def ontology_terms(ontology: Dict[str, Any]) -> List[Tuple[str, str]]:
-    terms: List[Tuple[str, str]] = []
+# -----------------------
+# MAIN
+# -----------------------
 
-    for axis, value in ontology.items():
-        if isinstance(value, list):
-            for item in value:
-                if item:
-                    terms.append((str(axis), str(item)))
-        elif value:
-            terms.append((str(axis), str(value)))
-
-    return terms
-
-
-# -------------------------
-# IO
-# -------------------------
-
-def write_json(path: Path, payload: Any) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
-    print(f"[write] {path}")
-
-
-# -------------------------
-# Main
-# -------------------------
-
-def main() -> int:
+def main():
     generated_at = now_iso()
 
-    raw_index = read_json_url(TRACE_INDEX_URL)
-    index_items = normalize_index(raw_index)
+    raw = read_json_url(TRACE_INDEX_URL)
+    index_items = normalize_index(raw)
 
-    traces: List[Dict[str, Any]] = []
-
+    traces = []
     for item in index_items:
-        trace_id = item.get("trace_id")
-        detail = safe_read_trace_detail(trace_id) if trace_id else None
+        detail = safe_read_trace_detail(item.get("trace_id"))
         traces.append(merge_trace(item, detail))
 
-    rels: List[Dict[str, Any]] = []
-    repo_rels: List[Dict[str, Any]] = []
-    ontology_rels: List[Dict[str, Any]] = []
-    avot_links: List[Dict[str, Any]] = []
-    thread_links: List[Dict[str, Any]] = []
+    rels = []
+    repo_rels = []
+    ontology_rels = []
+    avot_links = []
+    thread_links = []
 
-    for trace in traces:
-        trace_id = trace["trace_id"]
+    for t in traces:
+        tid = t["trace_id"]
 
         evidence = {
-            "repo": trace["repo"],
-            "workflow": trace["workflow"],
-            "status": trace["status"],
-            "timestamp": trace["timestamp"],
+            "repo": t["repo"],
+            "workflow": t["workflow"],
+            "status": t["status"],
+            "timestamp": t["timestamp"],
         }
 
-        # Repo relationship
-        if trace["repo"] and trace["repo"] != "unknown-repo":
-            r = relationship("observed_in_repo", trace_id, "repo", trace["repo"], evidence, 0.95)
+        if t["repo"] != "unknown-repo":
+            r = relationship("observed_in_repo", tid, "repo", t["repo"], evidence, 0.95)
             repo_rels.append(r)
             rels.append(r)
 
-        # AVOT
-        avot = (
-            trace["context"].get("avot")
-            or trace["context"].get("agent")
-            or infer_avot(trace["repo"], trace["workflow"], trace["status"])
-        )
+    causal_rels = build_causal_relationships(traces)
 
-        if avot:
-            r = relationship("associated_with_avot", trace_id, "avot", avot, evidence, 0.75)
-            avot_links.append(r)
-            rels.append(r)
-
-        # Thread
-        thread = trace["context"].get("thread") or trace["context"].get("topic")
-
-        if thread:
-            r = relationship("linked_to_thread", trace_id, "thread", str(thread), evidence, 0.8)
-            thread_links.append(r)
-            rels.append(r)
-
-        # Ontology
-        for axis, term in ontology_terms(trace["ontology"]):
-            r = relationship(
-                "tagged_with_ontology",
-                trace_id,
-                "ontology",
-                f"{axis}:{term}",
-                {**evidence, "axis": axis, "term": term},
-                0.9,
-            )
-            ontology_rels.append(r)
-            rels.append(r)
-
-    # 🔁 Deduplicate
-    rels = dedupe(rels)
-    repo_rels = dedupe(repo_rels)
-    ontology_rels = dedupe(ontology_rels)
-    avot_links = dedupe(avot_links)
-    thread_links = dedupe(thread_links)
-
-    # Index summary
     index_payload = {
         "generated_at": generated_at,
-        "source": {
-            "repo": "sovereign-codex/AVOT-TRACE",
-            "trace_index_url": TRACE_INDEX_URL,
-        },
         "counts": {
             "traces": len(traces),
             "relationships": len(rels),
-            "repo_relationships": len(repo_rels),
-            "ontology_relationships": len(ontology_rels),
-            "avot_links": len(avot_links),
-            "thread_links": len(thread_links),
+            "causal_relationships": len(causal_rels),
         },
-        "traces": [
-            {
-                "trace_id": t["trace_id"],
-                "repo": t["repo"],
-                "workflow": t["workflow"],
-                "status": t["status"],
-                "timestamp": t["timestamp"],
-                "context": t["context"],
-                "ontology": t["ontology"],
-            }
-            for t in traces
-        ],
+        "traces": traces,
     }
 
-    metadata = {
+    meta = {
         "generated_at": generated_at,
-        "source": "AVOT-TRACE",
-        "generator": GENERATOR_NAME,
         "schema": SCHEMA_VERSION,
+        "generator": GENERATOR_NAME,
     }
 
-    # Write outputs
-    write_json(OUT_DIR / "relationships/generated/trace-relationships.json", {**metadata, "relationships": rels})
-    write_json(OUT_DIR / "relationships/generated/repo-relationships.json", {**metadata, "relationships": repo_rels})
-    write_json(OUT_DIR / "relationships/generated/ontology-relationships.json", {**metadata, "relationships": ontology_rels})
-    write_json(OUT_DIR / "avot-links/generated/trace-avot-links.json", {**metadata, "relationships": avot_links})
-    write_json(OUT_DIR / "threads/generated/trace-thread-links.json", {**metadata, "relationships": thread_links})
-    write_json(OUT_DIR / "data/trace-relationship-index.json", index_payload)
+    def write(p, data):
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(json.dumps(data, indent=2))
 
-    print(json.dumps(index_payload["counts"], indent=2))
+    write(OUT_DIR / "relationships/generated/trace-relationships.json", {**meta, "relationships": rels})
+    write(OUT_DIR / "relationships/generated/repo-relationships.json", {**meta, "relationships": repo_rels})
+    write(OUT_DIR / "relationships/generated/causal-relationships.json", {**meta, "relationships": causal_rels})
+    write(OUT_DIR / "data/trace-relationship-index.json", index_payload)
 
+    print("DONE")
     return 0
 
 
