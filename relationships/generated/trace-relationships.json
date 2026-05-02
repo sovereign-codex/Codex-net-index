@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-02T22:58:09Z",
+  "generated_at": "2026-05-02T23:10:36Z",
   "schema": "codex.relationships.v1",
   "generator": "scripts/build_relationships.py",
   "relationships": [
@@ -23,6 +23,25 @@
       "confidence": 0.95
     },
     {
+      "id": "rel_trc_control-center-test__observed_in_repo__avot-archivist",
+      "type": "observed_in_repo",
+      "from": {
+        "kind": "trace",
+        "id": "trc_control center test"
+      },
+      "to": {
+        "kind": "repo",
+        "id": "sovereign-codex/AVOT-ARCHIVIST"
+      },
+      "evidence": {
+        "repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "workflow": "engine-runner",
+        "status": "normalized",
+        "timestamp": ""
+      },
+      "confidence": 0.95
+    },
+    {
       "id": "rel_trc_control-center-test__observed_in_repo__codex-control-center",
       "type": "observed_in_repo",
       "from": {
@@ -37,7 +56,7 @@
         "repo": "sovereign-codex/Codex-control-center",
         "workflow": "control-center-result-receiver",
         "status": "result_stored",
-        "timestamp": "2026-05-02T18:31:17Z"
+        "timestamp": "2026-05-02T23:05:18Z"
       },
       "confidence": 0.95
     },
@@ -61,7 +80,7 @@
       "confidence": 0.95
     },
     {
-      "id": "rel_trc_test-signal__observed_in_repo__codex-control-center",
+      "id": "rel_trc_test-signal__observed_in_repo__avot-engine",
       "type": "observed_in_repo",
       "from": {
         "kind": "trace",
@@ -69,13 +88,13 @@
       },
       "to": {
         "kind": "repo",
-        "id": "sovereign-codex/Codex-control-center"
+        "id": "sovereign-codex/AVOT-engine"
       },
       "evidence": {
-        "repo": "sovereign-codex/Codex-control-center",
-        "workflow": "control-center-result-receiver",
-        "status": "result_stored",
-        "timestamp": "2026-05-02T18:31:27Z"
+        "repo": "sovereign-codex/AVOT-engine",
+        "workflow": "avot-engine-receiver",
+        "status": "result_sent",
+        "timestamp": "2026-05-02T23:05:34Z"
       },
       "confidence": 0.95
     },

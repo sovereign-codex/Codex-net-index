@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-02T22:58:09Z",
+  "generated_at": "2026-05-02T23:10:36Z",
   "counts": {
-    "traces": 5,
-    "relationships": 5,
-    "causal_relationships": 6
+    "traces": 6,
+    "relationships": 6,
+    "causal_relationships": 1
   },
   "traces": [
     {
@@ -25,17 +25,48 @@
       ]
     },
     {
+      "trace_id": "trc_control center test",
+      "repo": "sovereign-codex/AVOT-ARCHIVIST",
+      "workflow": "engine-runner",
+      "status": "normalized",
+      "timestamp": "",
+      "context": {},
+      "ontology": {},
+      "events": []
+    },
+    {
       "trace_id": "trc_control-center-test",
       "repo": "sovereign-codex/Codex-control-center",
       "workflow": "control-center-result-receiver",
       "status": "result_stored",
-      "timestamp": "2026-05-02T18:31:17Z",
+      "timestamp": "2026-05-02T23:05:18Z",
       "context": {},
       "ontology": {},
       "events": [
         {
           "event_id": "25258872444-1-1777746677",
           "timestamp": "2026-05-02T18:31:17Z",
+          "repo": "sovereign-codex/Codex-control-center",
+          "workflow": "control-center-result-receiver",
+          "status": "result_stored"
+        },
+        {
+          "event_id": "25264112484-1-1777763098",
+          "timestamp": "2026-05-02T23:04:58Z",
+          "repo": "sovereign-codex/Codex-control-center",
+          "workflow": "cross-repo-dispatcher",
+          "status": "dispatched"
+        },
+        {
+          "event_id": "25264114757-1-1777763107",
+          "timestamp": "2026-05-02T23:05:07Z",
+          "repo": "sovereign-codex/AVOT-engine",
+          "workflow": "avot-engine-receiver",
+          "status": "engine_completed"
+        },
+        {
+          "event_id": "25264117910-1-1777763118",
+          "timestamp": "2026-05-02T23:05:18Z",
           "repo": "sovereign-codex/Codex-control-center",
           "workflow": "control-center-result-receiver",
           "status": "result_stored"
@@ -62,10 +93,10 @@
     },
     {
       "trace_id": "trc_test-signal",
-      "repo": "sovereign-codex/Codex-control-center",
-      "workflow": "control-center-result-receiver",
-      "status": "result_stored",
-      "timestamp": "2026-05-02T18:31:27Z",
+      "repo": "sovereign-codex/AVOT-engine",
+      "workflow": "avot-engine-receiver",
+      "status": "result_sent",
+      "timestamp": "2026-05-02T23:05:34Z",
       "context": {},
       "ontology": {},
       "events": [
@@ -75,6 +106,20 @@
           "repo": "sovereign-codex/Codex-control-center",
           "workflow": "control-center-result-receiver",
           "status": "result_stored"
+        },
+        {
+          "event_id": "25264109702-1-1777763088",
+          "timestamp": "2026-05-02T23:04:48Z",
+          "repo": "sovereign-codex/Codex-control-center",
+          "workflow": "control-center-router",
+          "status": "decision_created:avot-engine"
+        },
+        {
+          "event_id": "25264119941-1-1777763134",
+          "timestamp": "2026-05-02T23:05:34Z",
+          "repo": "sovereign-codex/AVOT-engine",
+          "workflow": "avot-engine-receiver",
+          "status": "result_sent"
         }
       ]
     },
