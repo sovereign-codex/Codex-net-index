@@ -1,0 +1,41 @@
+name: Codex Relationship Generator
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"  # every 15 minutes
+  workflow_dispatch:       # manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Codex Net Index
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Pull latest changes
+        run: |
+          git pull origin main --rebase || echo "No remote changes"
+
+      - name: Run relationship generator
+        run: |
+          python build_relationships.py
+
+      - name: Commit generated relationships
+        run: |
+          git config user.name "codex-index-bot"
+          git config user.email "actions@github.com"
+
+          git add relationships/ avot-links/ threads/ data/
+
+          git commit -m "Update relationship graph" || echo "No changes"
+
+          git push origin main
