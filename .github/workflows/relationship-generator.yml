@@ -27,7 +27,7 @@ jobs:
 
       - name: Run relationship generator
         run: |
-          python build_relationships.py
+          python scripts/build_relationships.py
 
       - name: Commit generated relationships
         run: |
