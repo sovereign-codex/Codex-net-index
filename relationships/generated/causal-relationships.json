@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-02T23:10:36Z",
+  "generated_at": "2026-05-03T00:01:59Z",
   "schema": "codex.relationships.v1",
   "generator": "scripts/build_relationships.py",
   "relationships": [
