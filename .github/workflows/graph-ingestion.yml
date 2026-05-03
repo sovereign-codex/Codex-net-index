@@ -1,0 +1,31 @@
+name: Graph Ingestion
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/15 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Codex Net Index
+        uses: actions/checkout@v4
+
+      - name: Build graph ingestion
+        run: python3 scripts/build_graph_ingestion.py
+
+      - name: Commit graph artifacts
+        run: |
+          git config user.name "codex-graph-bot"
+          git config user.email "actions@github.com"
+
+          git add data/system-graph.json data/node-reliability.json relationships/generated/temporal-causal-relationships.json
+
+          git commit -m "Update graph ingestion artifacts" || echo "No changes"
+
+          git push
