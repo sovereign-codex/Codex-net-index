@@ -1,0 +1,78 @@
+mirror_scope_id: convergence_seed_scope
+canon_posture: staging
+source_authority: BP-002
+source_authority_url: "https://app.notion.com/p/380c51d54b758185b738e6e6a00faf94"
+last_seen_at: "2026-06-15T03:00:04Z"
+notes:
+  - "Bounded source list from BP-002 only."
+  - "Unknown values are preserved as unknown rather than inferred."
+  - "The Codex-net-index Mirror Skeleton Plan title resolved to two candidate Notion pages; both candidates are preserved as an ambiguity."
+included_sources:
+  - title: "Convergence Architecture Map — Capability Sovereignty to Hall"
+    source_kind: page
+    resolution_status: resolved
+    source_id: "37fc51d5-4b75-81ae-92f2-fa6729cc1ffa"
+    source_url: "https://app.notion.com/p/37fc51d54b7581ae92f2fa6729cc1ffa"
+  - title: "30-Day Build Plan — Continuity Seed Node"
+    source_kind: page
+    resolution_status: resolved
+    source_id: "37fc51d5-4b75-8119-8fbe-f737a37904c9"
+    source_url: "https://app.notion.com/p/37fc51d54b7581198fbef737a37904c9"
+  - title: "Continuity Seed Node Task Sequence"
+    source_kind: database
+    resolution_status: resolved_database_schema_only
+    source_id: "118d071b-94fd-4048-80fb-92992cbd70e9"
+    source_url: "https://app.notion.com/p/118d071b94fd404880fb92992cbd70e9"
+    data_source_url: "collection://712fc222-e7f1-46df-9e2a-0f4ba4e606e3"
+  - title: "Branch Packet — convergence_seed_scope Notion Mirror Skeleton"
+    source_kind: page
+    resolution_status: resolved
+    source_id: "380c51d5-4b75-8114-b220-cac833db0800"
+    source_url: "https://app.notion.com/p/380c51d54b758114b220cac833db0800"
+  - title: "Fabricator Execution Trace — BP-001 convergence_seed_scope"
+    source_kind: page
+    resolution_status: resolved
+    source_id: "380c51d5-4b75-818e-9936-ca0383e3b2f2"
+    source_url: "https://app.notion.com/p/380c51d54b75818e9936ca0383e3b2f2"
+  - title: "Review Packet — convergence_seed_scope Mirror Skeleton Branch"
+    source_kind: page
+    resolution_status: resolved
+    source_id: "380c51d5-4b75-8187-87f6-ffb0c1f72ba2"
+    source_url: "https://app.notion.com/p/380c51d54b75818787f6ffb0c1f72ba2"
+  - title: "Codex-net-index Mirror Skeleton Plan — convergence_seed_scope"
+    source_kind: page
+    resolution_status: ambiguous_duplicate_title
+    source_id: unknown
+    source_url: unknown
+    candidate_sources:
+      - source_id: "37fc51d5-4b75-81c0-a44b-f4d5f3f5e7cf"
+        source_url: "https://app.notion.com/p/37fc51d54b7581c0a44bf4d5f3f5e7cf"
+        observed_title: "Codex-net-index Mirror Skeleton Plan — convergence_seed_scope"
+      - source_id: "37fc51d5-4b75-8145-a15f-f80cf06479da"
+        source_url: "https://app.notion.com/p/37fc51d54b758145a15ff80cf06479da"
+        observed_title: "Codex-net-index Mirror Skeleton Plan — convergence_seed_scope"
+  - title: "Notion Mirror Workflow Routing Map — v0.1"
+    source_kind: page
+    resolution_status: resolved
+    source_id: "37fc51d5-4b75-81f4-a0f1-d3398de8834c"
+    source_url: "https://app.notion.com/p/37fc51d54b7581f4a0f1d3398de8834c"
+  - title: "Mirror Artifact Structure Template — convergence_seed_scope"
+    source_kind: page
+    resolution_status: resolved
+    source_id: "37fc51d5-4b75-8116-ae03-e9e313f4b2b3"
+    source_url: "https://app.notion.com/p/37fc51d54b758116ae03e9e313f4b2b3"
+  - title: "Search Mirror Capability Contract — search_mirror v0.1"
+    source_kind: page
+    resolution_status: resolved
+    source_id: "37fc51d5-4b75-8178-8ed7-cd2d3f5d08be"
+    source_url: "https://app.notion.com/p/37fc51d54b7581788ed7cd2d3f5d08be"
+  - title: "Fetch Artifact Capability Contract — fetch_artifact v0.1"
+    source_kind: page
+    resolution_status: resolved
+    source_id: "37fc51d5-4b75-815b-a684-e8dbb10215c2"
+    source_url: "https://app.notion.com/p/37fc51d54b75815ba684e8dbb10215c2"
+  - title: "D-015 — Open Branch Continuity Protocol"
+    source_kind: page
+    resolution_status: resolved
+    source_id: "376c51d5-4b75-81f2-b1b6-d7c041f1efd1"
+    source_url: "https://app.notion.com/p/376c51d54b7581f2b1b6d7c041f1efd1"
