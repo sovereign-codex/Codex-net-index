@@ -1,0 +1,9 @@
+{
+  "index_version": "0.1-placeholder",
+  "canon_posture": "staging",
+  "scope": "convergence_seed_scope",
+  "artifact_state": "example_only",
+  "source_surface": "notion",
+  "target_surface": "github",
+  "entries": []
+}
