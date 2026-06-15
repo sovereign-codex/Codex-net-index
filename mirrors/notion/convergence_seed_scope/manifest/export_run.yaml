@@ -1,0 +1,28 @@
+export_run_id: BP-002-FAB-20260615T030004Z
+mirror_scope_id: convergence_seed_scope
+canon_posture: staging
+artifact_state: content_populated
+source_authority: BP-002
+source_authority_url: "https://app.notion.com/p/380c51d54b758185b738e6e6a00faf94"
+target_repository: sovereign-codex/Codex-net-index
+target_branch: seed/convergence-notion-mirror
+target_path: mirrors/notion/convergence_seed_scope/
+started_at: "2026-06-15T03:00:04Z"
+completed_at: "2026-06-15T03:00:04Z"
+run_mode: manual_bounded_connector_pass
+source_mutation_performed: false
+whole_workspace_export_performed: false
+live_recurring_sync_created: false
+write_capable_tooling_added: false
+notion_source_pages_mutated: false
+outputs:
+  included_scope: "mirrors/notion/convergence_seed_scope/manifest/included_scope.yaml"
+  excluded_scope: "mirrors/notion/convergence_seed_scope/manifest/excluded_scope.yaml"
+  manifest_records: "mirrors/notion/convergence_seed_scope/manifest/manifest.jsonl"
+  initial_jsonl_records: "mirrors/notion/convergence_seed_scope/jsonl/pages.jsonl"
+  markdown_projection: "mirrors/notion/convergence_seed_scope/markdown/thirty-day-build-plan.md"
+  artifact_index: "mirrors/notion/convergence_seed_scope/indexes/artifact_index.yaml"
+unknowns:
+  - "Exact Notion source_last_edited_at values were not exposed by fetched page output."
+  - "Content hashes were not generated in this connector-only pass."
+  - "Codex-net-index Mirror Skeleton Plan resolved to two same-title candidate pages."
