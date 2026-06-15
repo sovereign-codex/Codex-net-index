@@ -1,0 +1,57 @@
+mirror_scope_id: convergence_seed_scope
+canon_posture: staging
+source_authority: BP-002
+source_authority_url: "https://app.notion.com/p/380c51d54b758185b738e6e6a00faf94"
+updated_at: "2026-06-15T03:00:04Z"
+index_status: initial_content_populated
+limitations:
+  - "Only one full Markdown projection was written in this pass."
+  - "Most approved sources currently have manifest and JSONL metadata records only."
+  - "Codex-net-index Mirror Skeleton Plan title has duplicate Notion candidates and remains unresolved."
+  - "Content hashes are not generated in this connector-only pass."
+artifacts:
+  - canonical_slug: thirty-day-build-plan
+    title: "30-Day Build Plan — Continuity Seed Node"
+    source_kind: page
+    source_url: "https://app.notion.com/p/37fc51d54b7581198fbef737a37904c9"
+    manifest_id: "manifest:convergence_seed_scope:page:thirty-day-build-plan"
+    formats:
+      markdown: "mirrors/notion/convergence_seed_scope/markdown/thirty-day-build-plan.md"
+      jsonl: "mirrors/notion/convergence_seed_scope/jsonl/pages.jsonl"
+      manifest: "mirrors/notion/convergence_seed_scope/manifest/manifest.jsonl"
+    evidence_level: markdown_projection_from_fetched_source
+    confidence: high
+  - canonical_slug: convergence-architecture-map
+    title: "Convergence Architecture Map — Capability Sovereignty to Hall"
+    source_kind: page
+    source_url: "https://app.notion.com/p/37fc51d54b7581ae92f2fa6729cc1ffa"
+    manifest_id: "manifest:convergence_seed_scope:page:convergence-architecture-map"
+    formats:
+      jsonl: "mirrors/notion/convergence_seed_scope/jsonl/pages.jsonl"
+      manifest: "mirrors/notion/convergence_seed_scope/manifest/manifest.jsonl"
+    evidence_level: fetched_source_metadata
+    confidence: high
+  - canonical_slug: continuity-seed-node-task-sequence
+    title: "Continuity Seed Node Task Sequence"
+    source_kind: database
+    source_url: "https://app.notion.com/p/118d071b94fd404880fb92992cbd70e9"
+    data_source_url: "collection://712fc222-e7f1-46df-9e2a-0f4ba4e606e3"
+    manifest_id: "manifest:convergence_seed_scope:database:continuity-seed-node-task-sequence"
+    formats:
+      jsonl: "mirrors/notion/convergence_seed_scope/jsonl/pages.jsonl"
+      manifest: "mirrors/notion/convergence_seed_scope/manifest/manifest.jsonl"
+    evidence_level: database_schema_metadata_only
+    confidence: medium
+  - canonical_slug: codex-net-index-mirror-skeleton-plan
+    title: "Codex-net-index Mirror Skeleton Plan — convergence_seed_scope"
+    source_kind: page
+    source_url: unknown
+    manifest_id: "manifest:convergence_seed_scope:page:codex-net-index-mirror-skeleton-plan"
+    formats:
+      jsonl: "mirrors/notion/convergence_seed_scope/jsonl/pages.jsonl"
+      manifest: "mirrors/notion/convergence_seed_scope/manifest/manifest.jsonl"
+    evidence_level: ambiguous_duplicate_title
+    confidence: medium
+    candidate_source_urls:
+      - "https://app.notion.com/p/37fc51d54b7581c0a44bf4d5f3f5e7cf"
+      - "https://app.notion.com/p/37fc51d54b758145a15ff80cf06479da"
