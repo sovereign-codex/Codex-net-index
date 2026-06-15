@@ -1,0 +1,19 @@
+manifest_version: "0.1-placeholder"
+canon_posture: staging
+mirror_scope: convergence_seed_scope
+source_surface: notion
+artifact_state: example_only
+created_by: AVOT-Fabricator
+source_packet: BP-001
+export_run_id: null
+exported_at: null
+entries: []
+exclusions:
+  - real Notion exports
+  - raw source payloads
+  - API keys
+  - secrets
+  - live trace logs
+  - large binary artifacts
+  - workflow automation
+  - write-capable tooling
