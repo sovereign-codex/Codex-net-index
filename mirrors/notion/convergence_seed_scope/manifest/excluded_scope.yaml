@@ -1,0 +1,35 @@
+mirror_scope_id: convergence_seed_scope
+canon_posture: staging
+source_authority: BP-002
+source_authority_url: "https://app.notion.com/p/380c51d54b758185b738e6e6a00faf94"
+last_seen_at: "2026-06-15T03:00:04Z"
+excluded_sources:
+  - item: "whole workspace export"
+    reason: "BP-002 authorizes only the approved convergence_seed_scope source list."
+  - item: "unrelated research pages"
+    reason: "Outside BP-002 source scope."
+  - item: "private/stale historical pages"
+    reason: "Excluded unless separately packeted."
+  - item: "live recurring sync"
+    reason: "BP-002 forbids live recurring sync."
+  - item: "external web content"
+    reason: "BP-002 source authority is Notion source list only."
+  - item: "secrets or credentials"
+    reason: "Never appropriate for mirror artifacts."
+  - item: "raw browser screenshots unless explicitly authorized later"
+    reason: "Not authorized by BP-002."
+not_authorized_actions:
+  - open PR
+  - merge PR
+  - delete branch
+  - force push
+  - modify workflow files
+  - modify repository settings
+  - add secrets
+  - run whole-workspace export
+  - create live recurring sync
+  - add write-capable tools
+  - mutate Notion source pages
+  - promote mirror artifacts to canon
+  - include unrelated Notion pages
+  - include private or stale historical pages without separate packet
