@@ -1,0 +1,15 @@
+trace_schema_version: "0.1-placeholder"
+canon_posture: staging
+scope: convergence_seed_scope
+event_fields:
+  - event_id
+  - artifact_id
+  - event_type
+  - occurred_at
+  - agent
+  - runtime_packet_id
+  - source_surface
+  - target_surface
+  - notes
+example_only: true
+records: []
