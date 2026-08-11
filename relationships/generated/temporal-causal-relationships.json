@@ -1,0 +1,106 @@
+{
+  "generated_at": "2026-08-11T10:12:31Z",
+  "schema": "codex.relationships.v1",
+  "relationships": [
+    {
+      "id": "causal_trc_control-center-test_control-center-result-receiver_cross-repo-dispatcher",
+      "type": "triggered",
+      "from": {
+        "kind": "workflow",
+        "id": "control-center-result-receiver"
+      },
+      "to": {
+        "kind": "workflow",
+        "id": "cross-repo-dispatcher"
+      },
+      "evidence": {
+        "trace_id": "trc_control-center-test",
+        "from_status": "result_stored",
+        "to_status": "dispatched",
+        "from_timestamp": "2026-05-02T18:31:17Z",
+        "to_timestamp": "2026-05-02T23:04:58Z"
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "causal_trc_control-center-test_cross-repo-dispatcher_avot-engine-receiver",
+      "type": "chained",
+      "from": {
+        "kind": "workflow",
+        "id": "cross-repo-dispatcher"
+      },
+      "to": {
+        "kind": "workflow",
+        "id": "avot-engine-receiver"
+      },
+      "evidence": {
+        "trace_id": "trc_control-center-test",
+        "from_status": "dispatched",
+        "to_status": "engine_completed",
+        "from_timestamp": "2026-05-02T23:04:58Z",
+        "to_timestamp": "2026-05-02T23:05:07Z"
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "causal_trc_control-center-test_avot-engine-receiver_control-center-result-receiver",
+      "type": "triggered",
+      "from": {
+        "kind": "workflow",
+        "id": "avot-engine-receiver"
+      },
+      "to": {
+        "kind": "workflow",
+        "id": "control-center-result-receiver"
+      },
+      "evidence": {
+        "trace_id": "trc_control-center-test",
+        "from_status": "engine_completed",
+        "to_status": "result_stored",
+        "from_timestamp": "2026-05-02T23:05:07Z",
+        "to_timestamp": "2026-05-02T23:05:18Z"
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "causal_trc_test-signal_control-center-result-receiver_control-center-router",
+      "type": "triggered",
+      "from": {
+        "kind": "workflow",
+        "id": "control-center-result-receiver"
+      },
+      "to": {
+        "kind": "workflow",
+        "id": "control-center-router"
+      },
+      "evidence": {
+        "trace_id": "trc_test-signal",
+        "from_status": "result_stored",
+        "to_status": "decision_created:avot-engine",
+        "from_timestamp": "2026-05-02T18:31:27Z",
+        "to_timestamp": "2026-05-02T23:04:48Z"
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "causal_trc_test-signal_control-center-router_avot-engine-receiver",
+      "type": "chained",
+      "from": {
+        "kind": "workflow",
+        "id": "control-center-router"
+      },
+      "to": {
+        "kind": "workflow",
+        "id": "avot-engine-receiver"
+      },
+      "evidence": {
+        "trace_id": "trc_test-signal",
+        "from_status": "decision_created:avot-engine",
+        "to_status": "result_sent",
+        "from_timestamp": "2026-05-02T23:04:48Z",
+        "to_timestamp": "2026-05-02T23:05:34Z"
+      },
+      "confidence": 0.85
+    }
+  ]
+}

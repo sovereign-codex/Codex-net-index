@@ -1,0 +1,56 @@
+{
+  "generated_at": "2026-08-11T10:12:31Z",
+  "schema": "codex.node_reliability.v1",
+  "nodes": [
+    {
+      "key": "workflow:engine-runner",
+      "kind": "workflow",
+      "node_id": "engine-runner",
+      "state": "unknown",
+      "score": 100,
+      "successes": 0,
+      "failures": 0,
+      "events": 1
+    },
+    {
+      "key": "workflow:control-center-result-receiver",
+      "kind": "workflow",
+      "node_id": "control-center-result-receiver",
+      "state": "healthy",
+      "score": 100,
+      "successes": 3,
+      "failures": 0,
+      "events": 3
+    },
+    {
+      "key": "workflow:cross-repo-dispatcher",
+      "kind": "workflow",
+      "node_id": "cross-repo-dispatcher",
+      "state": "critical",
+      "score": 0,
+      "successes": 0,
+      "failures": 1,
+      "events": 2
+    },
+    {
+      "key": "workflow:avot-engine-receiver",
+      "kind": "workflow",
+      "node_id": "avot-engine-receiver",
+      "state": "healthy",
+      "score": 100,
+      "successes": 2,
+      "failures": 0,
+      "events": 2
+    },
+    {
+      "key": "workflow:control-center-router",
+      "kind": "workflow",
+      "node_id": "control-center-router",
+      "state": "unknown",
+      "score": 100,
+      "successes": 0,
+      "failures": 0,
+      "events": 2
+    }
+  ]
+}

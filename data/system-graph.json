@@ -1,0 +1,371 @@
+{
+  "generated_at": "2026-08-11T10:12:31Z",
+  "schema": "codex.system_graph.v1",
+  "source": "AVOT-TRACE",
+  "nodes": [
+    {
+      "key": "trace:engine_25258856233",
+      "kind": "trace",
+      "id": "engine_25258856233",
+      "label": "engine_25258856233",
+      "weight": 1
+    },
+    {
+      "key": "repo:sovereign-codex/AVOT-ARCHIVIST",
+      "kind": "repo",
+      "id": "sovereign-codex/AVOT-ARCHIVIST",
+      "label": "sovereign-codex/AVOT-ARCHIVIST",
+      "weight": 1
+    },
+    {
+      "key": "workflow:engine-runner",
+      "kind": "workflow",
+      "id": "engine-runner",
+      "label": "engine-runner",
+      "weight": 1
+    },
+    {
+      "key": "trace:trc_control-center-test",
+      "kind": "trace",
+      "id": "trc_control-center-test",
+      "label": "trc_control-center-test",
+      "weight": 1
+    },
+    {
+      "key": "repo:sovereign-codex/Codex-control-center",
+      "kind": "repo",
+      "id": "sovereign-codex/Codex-control-center",
+      "label": "sovereign-codex/Codex-control-center",
+      "weight": 7
+    },
+    {
+      "key": "workflow:control-center-result-receiver",
+      "kind": "workflow",
+      "id": "control-center-result-receiver",
+      "label": "control-center-result-receiver",
+      "weight": 6
+    },
+    {
+      "key": "workflow:cross-repo-dispatcher",
+      "kind": "workflow",
+      "id": "cross-repo-dispatcher",
+      "label": "cross-repo-dispatcher",
+      "weight": 4
+    },
+    {
+      "key": "repo:sovereign-codex/AVOT-engine",
+      "kind": "repo",
+      "id": "sovereign-codex/AVOT-engine",
+      "label": "sovereign-codex/AVOT-engine",
+      "weight": 2
+    },
+    {
+      "key": "workflow:avot-engine-receiver",
+      "kind": "workflow",
+      "id": "avot-engine-receiver",
+      "label": "avot-engine-receiver",
+      "weight": 5
+    },
+    {
+      "key": "trace:trc_interlink-test",
+      "kind": "trace",
+      "id": "trc_interlink-test",
+      "label": "trc_interlink-test",
+      "weight": 1
+    },
+    {
+      "key": "workflow:control-center-router",
+      "kind": "workflow",
+      "id": "control-center-router",
+      "label": "control-center-router",
+      "weight": 4
+    },
+    {
+      "key": "trace:trc_test-signal",
+      "kind": "trace",
+      "id": "trc_test-signal",
+      "label": "trc_test-signal",
+      "weight": 1
+    },
+    {
+      "key": "trace:trc_test-trigger",
+      "kind": "trace",
+      "id": "trc_test-trigger",
+      "label": "trc_test-trigger",
+      "weight": 1
+    }
+  ],
+  "edges": [
+    {
+      "id": "trace:engine_25258856233__observed_in_repo__repo:sovereign-codex/AVOT-ARCHIVIST",
+      "source": "trace:engine_25258856233",
+      "target": "repo:sovereign-codex/AVOT-ARCHIVIST",
+      "type": "observed_in_repo",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "engine_25258856233",
+        "status": "started",
+        "timestamp": "2026-05-02T18:30:38Z"
+      }
+    },
+    {
+      "id": "trace:engine_25258856233__passed_through_workflow__workflow:engine-runner",
+      "source": "trace:engine_25258856233",
+      "target": "workflow:engine-runner",
+      "type": "passed_through_workflow",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "engine_25258856233",
+        "repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "status": "started",
+        "timestamp": "2026-05-02T18:30:38Z"
+      }
+    },
+    {
+      "id": "trace:trc_control-center-test__observed_in_repo__repo:sovereign-codex/Codex-control-center",
+      "source": "trace:trc_control-center-test",
+      "target": "repo:sovereign-codex/Codex-control-center",
+      "type": "observed_in_repo",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "trc_control-center-test",
+        "status": "result_stored",
+        "timestamp": "2026-05-02T23:05:18Z"
+      }
+    },
+    {
+      "id": "trace:trc_control-center-test__passed_through_workflow__workflow:control-center-result-receiver",
+      "source": "trace:trc_control-center-test",
+      "target": "workflow:control-center-result-receiver",
+      "type": "passed_through_workflow",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "trc_control-center-test",
+        "repo": "sovereign-codex/Codex-control-center",
+        "status": "result_stored",
+        "timestamp": "2026-05-02T23:05:18Z"
+      }
+    },
+    {
+      "id": "trace:trc_control-center-test__passed_through_workflow__workflow:cross-repo-dispatcher",
+      "source": "trace:trc_control-center-test",
+      "target": "workflow:cross-repo-dispatcher",
+      "type": "passed_through_workflow",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "trc_control-center-test",
+        "repo": "sovereign-codex/Codex-control-center",
+        "status": "dispatched",
+        "timestamp": "2026-05-02T23:04:58Z"
+      }
+    },
+    {
+      "id": "trace:trc_control-center-test__observed_in_repo__repo:sovereign-codex/AVOT-engine",
+      "source": "trace:trc_control-center-test",
+      "target": "repo:sovereign-codex/AVOT-engine",
+      "type": "observed_in_repo",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "trc_control-center-test",
+        "status": "engine_completed",
+        "timestamp": "2026-05-02T23:05:07Z"
+      }
+    },
+    {
+      "id": "trace:trc_control-center-test__passed_through_workflow__workflow:avot-engine-receiver",
+      "source": "trace:trc_control-center-test",
+      "target": "workflow:avot-engine-receiver",
+      "type": "passed_through_workflow",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "trc_control-center-test",
+        "repo": "sovereign-codex/AVOT-engine",
+        "status": "engine_completed",
+        "timestamp": "2026-05-02T23:05:07Z"
+      }
+    },
+    {
+      "id": "workflow:control-center-result-receiver__triggered__workflow:cross-repo-dispatcher",
+      "source": "workflow:control-center-result-receiver",
+      "target": "workflow:cross-repo-dispatcher",
+      "type": "triggered",
+      "weight": 2,
+      "evidence": {
+        "trace_id": "trc_control-center-test",
+        "from_status": "result_stored",
+        "to_status": "dispatched",
+        "from_timestamp": "2026-05-02T18:31:17Z",
+        "to_timestamp": "2026-05-02T23:04:58Z"
+      }
+    },
+    {
+      "id": "workflow:cross-repo-dispatcher__chained__workflow:avot-engine-receiver",
+      "source": "workflow:cross-repo-dispatcher",
+      "target": "workflow:avot-engine-receiver",
+      "type": "chained",
+      "weight": 2,
+      "evidence": {
+        "trace_id": "trc_control-center-test",
+        "from_status": "dispatched",
+        "to_status": "engine_completed",
+        "from_timestamp": "2026-05-02T23:04:58Z",
+        "to_timestamp": "2026-05-02T23:05:07Z"
+      }
+    },
+    {
+      "id": "workflow:avot-engine-receiver__triggered__workflow:control-center-result-receiver",
+      "source": "workflow:avot-engine-receiver",
+      "target": "workflow:control-center-result-receiver",
+      "type": "triggered",
+      "weight": 2,
+      "evidence": {
+        "trace_id": "trc_control-center-test",
+        "from_status": "engine_completed",
+        "to_status": "result_stored",
+        "from_timestamp": "2026-05-02T23:05:07Z",
+        "to_timestamp": "2026-05-02T23:05:18Z"
+      }
+    },
+    {
+      "id": "trace:trc_interlink-test__observed_in_repo__repo:sovereign-codex/Codex-control-center",
+      "source": "trace:trc_interlink-test",
+      "target": "repo:sovereign-codex/Codex-control-center",
+      "type": "observed_in_repo",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "trc_interlink-test",
+        "status": "decision_created:control-center",
+        "timestamp": "2026-05-02T18:30:47Z"
+      }
+    },
+    {
+      "id": "trace:trc_interlink-test__passed_through_workflow__workflow:control-center-router",
+      "source": "trace:trc_interlink-test",
+      "target": "workflow:control-center-router",
+      "type": "passed_through_workflow",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "trc_interlink-test",
+        "repo": "sovereign-codex/Codex-control-center",
+        "status": "decision_created:control-center",
+        "timestamp": "2026-05-02T18:30:47Z"
+      }
+    },
+    {
+      "id": "trace:trc_test-signal__observed_in_repo__repo:sovereign-codex/Codex-control-center",
+      "source": "trace:trc_test-signal",
+      "target": "repo:sovereign-codex/Codex-control-center",
+      "type": "observed_in_repo",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "trc_test-signal",
+        "status": "decision_created:avot-engine",
+        "timestamp": "2026-05-02T23:04:48Z"
+      }
+    },
+    {
+      "id": "trace:trc_test-signal__passed_through_workflow__workflow:control-center-result-receiver",
+      "source": "trace:trc_test-signal",
+      "target": "workflow:control-center-result-receiver",
+      "type": "passed_through_workflow",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "trc_test-signal",
+        "repo": "sovereign-codex/Codex-control-center",
+        "status": "result_stored",
+        "timestamp": "2026-05-02T18:31:27Z"
+      }
+    },
+    {
+      "id": "trace:trc_test-signal__passed_through_workflow__workflow:control-center-router",
+      "source": "trace:trc_test-signal",
+      "target": "workflow:control-center-router",
+      "type": "passed_through_workflow",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "trc_test-signal",
+        "repo": "sovereign-codex/Codex-control-center",
+        "status": "decision_created:avot-engine",
+        "timestamp": "2026-05-02T23:04:48Z"
+      }
+    },
+    {
+      "id": "trace:trc_test-signal__observed_in_repo__repo:sovereign-codex/AVOT-engine",
+      "source": "trace:trc_test-signal",
+      "target": "repo:sovereign-codex/AVOT-engine",
+      "type": "observed_in_repo",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "trc_test-signal",
+        "status": "result_sent",
+        "timestamp": "2026-05-02T23:05:34Z"
+      }
+    },
+    {
+      "id": "trace:trc_test-signal__passed_through_workflow__workflow:avot-engine-receiver",
+      "source": "trace:trc_test-signal",
+      "target": "workflow:avot-engine-receiver",
+      "type": "passed_through_workflow",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "trc_test-signal",
+        "repo": "sovereign-codex/AVOT-engine",
+        "status": "result_sent",
+        "timestamp": "2026-05-02T23:05:34Z"
+      }
+    },
+    {
+      "id": "workflow:control-center-result-receiver__triggered__workflow:control-center-router",
+      "source": "workflow:control-center-result-receiver",
+      "target": "workflow:control-center-router",
+      "type": "triggered",
+      "weight": 2,
+      "evidence": {
+        "trace_id": "trc_test-signal",
+        "from_status": "result_stored",
+        "to_status": "decision_created:avot-engine",
+        "from_timestamp": "2026-05-02T18:31:27Z",
+        "to_timestamp": "2026-05-02T23:04:48Z"
+      }
+    },
+    {
+      "id": "workflow:control-center-router__chained__workflow:avot-engine-receiver",
+      "source": "workflow:control-center-router",
+      "target": "workflow:avot-engine-receiver",
+      "type": "chained",
+      "weight": 2,
+      "evidence": {
+        "trace_id": "trc_test-signal",
+        "from_status": "decision_created:avot-engine",
+        "to_status": "result_sent",
+        "from_timestamp": "2026-05-02T23:04:48Z",
+        "to_timestamp": "2026-05-02T23:05:34Z"
+      }
+    },
+    {
+      "id": "trace:trc_test-trigger__observed_in_repo__repo:sovereign-codex/Codex-control-center",
+      "source": "trace:trc_test-trigger",
+      "target": "repo:sovereign-codex/Codex-control-center",
+      "type": "observed_in_repo",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "trc_test-trigger",
+        "status": "no_route_found",
+        "timestamp": "2026-05-02T18:31:02Z"
+      }
+    },
+    {
+      "id": "trace:trc_test-trigger__passed_through_workflow__workflow:cross-repo-dispatcher",
+      "source": "trace:trc_test-trigger",
+      "target": "workflow:cross-repo-dispatcher",
+      "type": "passed_through_workflow",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "trc_test-trigger",
+        "repo": "sovereign-codex/Codex-control-center",
+        "status": "no_route_found",
+        "timestamp": "2026-05-02T18:31:02Z"
+      }
+    }
+  ]
+}
