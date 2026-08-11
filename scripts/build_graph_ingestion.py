@@ -10,7 +10,7 @@ from pathlib import Path
 
 TRACE_INDEX_URL = os.environ.get(
     "TRACE_INDEX_URL",
-    "https://raw.githubusercontent.com/sovereign-codex/AVOT-TRACE/main/index/trace-index.json",
+    "https://raw.githubusercontent.com/sovereign-codex/AVOT-TRACE/main/data/trace-index.json",
 )
 
 TRACE_BASE_URL = os.environ.get(
