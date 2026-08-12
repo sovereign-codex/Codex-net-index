@@ -47,7 +47,7 @@ def add_node(nodes, kind, node_id, label=None):
             "kind": kind,
             "id": node_id,
             "label": label or node_id,
-            "weight": 1
+            "weight": 1,
         }
     else:
         nodes[key]["weight"] += 1
@@ -56,13 +56,18 @@ def add_node(nodes, kind, node_id, label=None):
 
 def add_edge(edges, source, target, rel_type, evidence=None, weight=1):
     edge_id = f"{source}__{rel_type}__{target}"
+    if edge_id in edges:
+        edges[edge_id]["weight"] += weight
+        if evidence:
+            edges[edge_id]["evidence"] = evidence
+        return
     edges[edge_id] = {
         "id": edge_id,
         "source": source,
         "target": target,
         "type": rel_type,
         "weight": weight,
-        "evidence": evidence or {}
+        "evidence": evidence or {},
     }
 
 
@@ -76,6 +81,50 @@ def health_state(successes, failures):
     if score < 80:
         return "degraded", score
     return "healthy", score
+
+
+def semantic_evidence(trace_id, event):
+    semantic = event.get("semantic") if isinstance(event.get("semantic"), dict) else {}
+    evidence = {
+        "trace_id": trace_id,
+        "event_id": event.get("event_id"),
+        "event_class": event.get("event_class"),
+        "protocol_version": event.get("protocol_version"),
+        "status": event.get("status"),
+        "timestamp": event.get("timestamp"),
+        "institutional_state": semantic.get("institutional_state"),
+        "execution_state": semantic.get("execution_state"),
+        "flow_state": semantic.get("flow_state"),
+        "authority_state": semantic.get("authority_state"),
+        "next_valid_action": semantic.get("next_valid_action"),
+        "review_requirement": semantic.get("review_requirement"),
+        "handoff_semantics": semantic.get("handoff_semantics"),
+    }
+    return {k: v for k, v in evidence.items() if v is not None}
+
+
+def project_institutional_semantics(nodes, edges, trace_node, trace_id, event):
+    """Promote stable institutional actors only; retain mutable state as evidence."""
+    semantic = event.get("semantic") if isinstance(event.get("semantic"), dict) else {}
+    if not semantic:
+        return
+
+    evidence = semantic_evidence(trace_id, event)
+
+    source_role = semantic.get("source_role")
+    if source_role:
+        source_role_node = add_node(nodes, "role", source_role)
+        add_edge(edges, trace_node, source_role_node, "emitted_by_role", evidence)
+
+    receiving_office = semantic.get("receiving_office")
+    if receiving_office:
+        office_node = add_node(nodes, "office", receiving_office)
+        add_edge(edges, trace_node, office_node, "received_by_office", evidence)
+
+    review_role = semantic.get("review_role")
+    if review_role:
+        review_role_node = add_node(nodes, "role", review_role)
+        add_edge(edges, trace_node, review_role_node, "has_review_role", evidence)
 
 
 def main():
@@ -114,32 +163,17 @@ def main():
 
             repo_node = add_node(nodes, "repo", source)
             workflow_node = add_node(nodes, "workflow", workflow)
+            base_evidence = semantic_evidence(trace_id, event)
+            base_evidence["repo"] = source
 
-            add_edge(
-                edges,
-                trace_node,
-                repo_node,
-                "observed_in_repo",
-                {"trace_id": trace_id, "status": status, "timestamp": event.get("timestamp")}
-            )
-
-            add_edge(
-                edges,
-                trace_node,
-                workflow_node,
-                "passed_through_workflow",
-                {"trace_id": trace_id, "repo": source, "status": status, "timestamp": event.get("timestamp")}
-            )
+            add_edge(edges, trace_node, repo_node, "observed_in_repo", base_evidence)
+            add_edge(edges, trace_node, workflow_node, "passed_through_workflow", base_evidence)
 
             if target:
                 target_node = add_node(nodes, "repo", target)
-                add_edge(
-                    edges,
-                    workflow_node,
-                    target_node,
-                    "routed_to",
-                    {"trace_id": trace_id, "status": status, "timestamp": event.get("timestamp")}
-                )
+                add_edge(edges, workflow_node, target_node, "routed_to", base_evidence)
+
+            project_institutional_semantics(nodes, edges, trace_node, trace_id, event)
 
             key = node_key("workflow", workflow)
             reliability[key]["events"] += 1
@@ -177,9 +211,9 @@ def main():
                     "from_status": prev.get("status"),
                     "to_status": nxt.get("status"),
                     "from_timestamp": prev.get("timestamp"),
-                    "to_timestamp": nxt.get("timestamp")
+                    "to_timestamp": nxt.get("timestamp"),
                 },
-                "confidence": 0.85
+                "confidence": 0.85,
             }
 
             temporal_relationships.append(rel)
@@ -195,27 +229,41 @@ def main():
             "node_id": node_id,
             "state": state,
             "score": score,
-            **stats
+            **stats,
         })
 
     system_graph = {
         "generated_at": generated_at,
-        "schema": "codex.system_graph.v1",
+        "schema": "codex.system_graph.v1.1-experimental",
         "source": "AVOT-TRACE",
+        "semantic_projection": {
+            "promoted_node_kinds": ["office", "role"],
+            "promoted_fields": ["semantic.receiving_office", "semantic.source_role", "semantic.review_role"],
+            "evidence_only_fields": [
+                "semantic.institutional_state",
+                "semantic.execution_state",
+                "semantic.flow_state",
+                "semantic.authority_state",
+                "semantic.next_valid_action",
+                "semantic.review_requirement",
+                "semantic.handoff_semantics",
+            ],
+            "posture": "conservative-experimental",
+        },
         "nodes": list(nodes.values()),
-        "edges": list(edges.values())
+        "edges": list(edges.values()),
     }
 
     rel_payload = {
         "generated_at": generated_at,
         "schema": "codex.relationships.v1",
-        "relationships": temporal_relationships
+        "relationships": temporal_relationships,
     }
 
     reliability_payload = {
         "generated_at": generated_at,
         "schema": "codex.node_reliability.v1",
-        "nodes": reliability_nodes
+        "nodes": reliability_nodes,
     }
 
     write_json(OUT_DIR / "data/system-graph.json", system_graph)
@@ -226,7 +274,8 @@ def main():
         "nodes": len(system_graph["nodes"]),
         "edges": len(system_graph["edges"]),
         "temporal_relationships": len(temporal_relationships),
-        "reliability_nodes": len(reliability_nodes)
+        "reliability_nodes": len(reliability_nodes),
+        "schema": system_graph["schema"],
     }, indent=2))
 
 
