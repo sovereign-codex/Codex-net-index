@@ -1,16 +1,26 @@
 {
-  "generated_at": "2026-08-12T04:24:12Z",
+  "generated_at": "2026-08-12T05:58:22Z",
   "schema": "codex.node_reliability.v1",
   "nodes": [
     {
-      "key": "workflow:engine-runner",
+      "key": "workflow:archivist-ingest",
       "kind": "workflow",
-      "node_id": "engine-runner",
+      "node_id": "archivist-ingest",
       "state": "unknown",
       "score": 100,
       "successes": 0,
       "failures": 0,
-      "events": 1
+      "events": 2
+    },
+    {
+      "key": "workflow:engine-runner",
+      "kind": "workflow",
+      "node_id": "engine-runner",
+      "state": "healthy",
+      "score": 100,
+      "successes": 1,
+      "failures": 0,
+      "events": 7
     },
     {
       "key": "workflow:control-center-result-receiver",
@@ -50,7 +60,7 @@
       "score": 100,
       "successes": 0,
       "failures": 0,
-      "events": 2
+      "events": 3
     }
   ]
 }

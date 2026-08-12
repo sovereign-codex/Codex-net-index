@@ -1,8 +1,78 @@
 {
-  "generated_at": "2026-08-12T04:24:12Z",
-  "schema": "codex.system_graph.v1",
+  "generated_at": "2026-08-12T05:58:22Z",
+  "schema": "codex.system_graph.v1.1-experimental",
   "source": "AVOT-TRACE",
+  "semantic_projection": {
+    "promoted_node_kinds": [
+      "office",
+      "role"
+    ],
+    "promoted_fields": [
+      "semantic.receiving_office",
+      "semantic.source_role",
+      "semantic.review_role"
+    ],
+    "evidence_only_fields": [
+      "semantic.institutional_state",
+      "semantic.execution_state",
+      "semantic.flow_state",
+      "semantic.authority_state",
+      "semantic.next_valid_action",
+      "semantic.review_requirement",
+      "semantic.handoff_semantics"
+    ],
+    "posture": "conservative-experimental"
+  },
   "nodes": [
+    {
+      "key": "trace:META-CIRCULATION-004",
+      "kind": "trace",
+      "id": "META-CIRCULATION-004",
+      "label": "META-CIRCULATION-004",
+      "weight": 1
+    },
+    {
+      "key": "repo:sovereign-codex/AVOT-ARCHIVIST",
+      "kind": "repo",
+      "id": "sovereign-codex/AVOT-ARCHIVIST",
+      "label": "sovereign-codex/AVOT-ARCHIVIST",
+      "weight": 9
+    },
+    {
+      "key": "workflow:archivist-ingest",
+      "kind": "workflow",
+      "id": "archivist-ingest",
+      "label": "archivist-ingest",
+      "weight": 2
+    },
+    {
+      "key": "role:Bootstrap Coordinator",
+      "kind": "role",
+      "id": "Bootstrap Coordinator",
+      "label": "Bootstrap Coordinator",
+      "weight": 2
+    },
+    {
+      "key": "office:Office Incoming Inventory",
+      "kind": "office",
+      "id": "Office Incoming Inventory",
+      "label": "Office Incoming Inventory",
+      "weight": 2
+    },
+    {
+      "key": "role:Promotion Reviewer",
+      "kind": "role",
+      "id": "Promotion Reviewer",
+      "label": "Promotion Reviewer",
+      "weight": 2
+    },
+    {
+      "key": "trace:META-CIRCULATION-005",
+      "kind": "trace",
+      "id": "META-CIRCULATION-005",
+      "label": "META-CIRCULATION-005",
+      "weight": 1
+    },
     {
       "key": "trace:engine_25258856233",
       "kind": "trace",
@@ -11,17 +81,38 @@
       "weight": 1
     },
     {
-      "key": "repo:sovereign-codex/AVOT-ARCHIVIST",
-      "kind": "repo",
-      "id": "sovereign-codex/AVOT-ARCHIVIST",
-      "label": "sovereign-codex/AVOT-ARCHIVIST",
-      "weight": 1
-    },
-    {
       "key": "workflow:engine-runner",
       "kind": "workflow",
       "id": "engine-runner",
       "label": "engine-runner",
+      "weight": 10
+    },
+    {
+      "key": "trace:engine_25264526756",
+      "kind": "trace",
+      "id": "engine_25264526756",
+      "label": "engine_25264526756",
+      "weight": 1
+    },
+    {
+      "key": "trace:engine_25264564244",
+      "kind": "trace",
+      "id": "engine_25264564244",
+      "label": "engine_25264564244",
+      "weight": 1
+    },
+    {
+      "key": "trace:engine_25285171457",
+      "kind": "trace",
+      "id": "engine_25285171457",
+      "label": "engine_25285171457",
+      "weight": 1
+    },
+    {
+      "key": "trace:engine_31564894890",
+      "kind": "trace",
+      "id": "engine_31564894890",
+      "label": "engine_31564894890",
       "weight": 1
     },
     {
@@ -36,7 +127,7 @@
       "kind": "repo",
       "id": "sovereign-codex/Codex-control-center",
       "label": "sovereign-codex/Codex-control-center",
-      "weight": 7
+      "weight": 8
     },
     {
       "key": "workflow:control-center-result-receiver",
@@ -50,7 +141,7 @@
       "kind": "workflow",
       "id": "cross-repo-dispatcher",
       "label": "cross-repo-dispatcher",
-      "weight": 4
+      "weight": 5
     },
     {
       "key": "repo:sovereign-codex/AVOT-engine",
@@ -78,7 +169,14 @@
       "kind": "workflow",
       "id": "control-center-router",
       "label": "control-center-router",
-      "weight": 4
+      "weight": 5
+    },
+    {
+      "key": "trace:trc_research-quantum-mapping",
+      "kind": "trace",
+      "id": "trc_research-quantum-mapping",
+      "label": "trc_research-quantum-mapping",
+      "weight": 1
     },
     {
       "key": "trace:trc_test-signal",
@@ -97,6 +195,280 @@
   ],
   "edges": [
     {
+      "id": "trace:META-CIRCULATION-004__observed_in_repo__repo:sovereign-codex/AVOT-ARCHIVIST",
+      "source": "trace:META-CIRCULATION-004",
+      "target": "repo:sovereign-codex/AVOT-ARCHIVIST",
+      "type": "observed_in_repo",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "META-CIRCULATION-004",
+        "event_id": "308802a8a585328c8a61b350",
+        "event_class": "institutional_event",
+        "protocol_version": "meta-circulation/0.4",
+        "status": "downstream_continuity_probe",
+        "timestamp": "2026-08-12T04:52:00Z",
+        "institutional_state": "semantic_membrane_active",
+        "execution_state": "trace_boundary_under_test",
+        "flow_state": "archivist_to_trace_to_graph",
+        "authority_state": "authorized_by_accountable_human",
+        "next_valid_action": "inspect_trace_and_graph_projection",
+        "review_requirement": "deferred_to_daily_cycle",
+        "handoff_semantics": {
+          "continuity_worthy": true,
+          "next_agent_required": false,
+          "rediscovery_required": false,
+          "return_basis": "downstream_semantic_continuity"
+        },
+        "repo": "sovereign-codex/AVOT-ARCHIVIST"
+      }
+    },
+    {
+      "id": "trace:META-CIRCULATION-004__passed_through_workflow__workflow:archivist-ingest",
+      "source": "trace:META-CIRCULATION-004",
+      "target": "workflow:archivist-ingest",
+      "type": "passed_through_workflow",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "META-CIRCULATION-004",
+        "event_id": "308802a8a585328c8a61b350",
+        "event_class": "institutional_event",
+        "protocol_version": "meta-circulation/0.4",
+        "status": "downstream_continuity_probe",
+        "timestamp": "2026-08-12T04:52:00Z",
+        "institutional_state": "semantic_membrane_active",
+        "execution_state": "trace_boundary_under_test",
+        "flow_state": "archivist_to_trace_to_graph",
+        "authority_state": "authorized_by_accountable_human",
+        "next_valid_action": "inspect_trace_and_graph_projection",
+        "review_requirement": "deferred_to_daily_cycle",
+        "handoff_semantics": {
+          "continuity_worthy": true,
+          "next_agent_required": false,
+          "rediscovery_required": false,
+          "return_basis": "downstream_semantic_continuity"
+        },
+        "repo": "sovereign-codex/AVOT-ARCHIVIST"
+      }
+    },
+    {
+      "id": "trace:META-CIRCULATION-004__emitted_by_role__role:Bootstrap Coordinator",
+      "source": "trace:META-CIRCULATION-004",
+      "target": "role:Bootstrap Coordinator",
+      "type": "emitted_by_role",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "META-CIRCULATION-004",
+        "event_id": "308802a8a585328c8a61b350",
+        "event_class": "institutional_event",
+        "protocol_version": "meta-circulation/0.4",
+        "status": "downstream_continuity_probe",
+        "timestamp": "2026-08-12T04:52:00Z",
+        "institutional_state": "semantic_membrane_active",
+        "execution_state": "trace_boundary_under_test",
+        "flow_state": "archivist_to_trace_to_graph",
+        "authority_state": "authorized_by_accountable_human",
+        "next_valid_action": "inspect_trace_and_graph_projection",
+        "review_requirement": "deferred_to_daily_cycle",
+        "handoff_semantics": {
+          "continuity_worthy": true,
+          "next_agent_required": false,
+          "rediscovery_required": false,
+          "return_basis": "downstream_semantic_continuity"
+        }
+      }
+    },
+    {
+      "id": "trace:META-CIRCULATION-004__received_by_office__office:Office Incoming Inventory",
+      "source": "trace:META-CIRCULATION-004",
+      "target": "office:Office Incoming Inventory",
+      "type": "received_by_office",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "META-CIRCULATION-004",
+        "event_id": "308802a8a585328c8a61b350",
+        "event_class": "institutional_event",
+        "protocol_version": "meta-circulation/0.4",
+        "status": "downstream_continuity_probe",
+        "timestamp": "2026-08-12T04:52:00Z",
+        "institutional_state": "semantic_membrane_active",
+        "execution_state": "trace_boundary_under_test",
+        "flow_state": "archivist_to_trace_to_graph",
+        "authority_state": "authorized_by_accountable_human",
+        "next_valid_action": "inspect_trace_and_graph_projection",
+        "review_requirement": "deferred_to_daily_cycle",
+        "handoff_semantics": {
+          "continuity_worthy": true,
+          "next_agent_required": false,
+          "rediscovery_required": false,
+          "return_basis": "downstream_semantic_continuity"
+        }
+      }
+    },
+    {
+      "id": "trace:META-CIRCULATION-004__has_review_role__role:Promotion Reviewer",
+      "source": "trace:META-CIRCULATION-004",
+      "target": "role:Promotion Reviewer",
+      "type": "has_review_role",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "META-CIRCULATION-004",
+        "event_id": "308802a8a585328c8a61b350",
+        "event_class": "institutional_event",
+        "protocol_version": "meta-circulation/0.4",
+        "status": "downstream_continuity_probe",
+        "timestamp": "2026-08-12T04:52:00Z",
+        "institutional_state": "semantic_membrane_active",
+        "execution_state": "trace_boundary_under_test",
+        "flow_state": "archivist_to_trace_to_graph",
+        "authority_state": "authorized_by_accountable_human",
+        "next_valid_action": "inspect_trace_and_graph_projection",
+        "review_requirement": "deferred_to_daily_cycle",
+        "handoff_semantics": {
+          "continuity_worthy": true,
+          "next_agent_required": false,
+          "rediscovery_required": false,
+          "return_basis": "downstream_semantic_continuity"
+        }
+      }
+    },
+    {
+      "id": "trace:META-CIRCULATION-005__observed_in_repo__repo:sovereign-codex/AVOT-ARCHIVIST",
+      "source": "trace:META-CIRCULATION-005",
+      "target": "repo:sovereign-codex/AVOT-ARCHIVIST",
+      "type": "observed_in_repo",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "META-CIRCULATION-005",
+        "event_id": "8f8c156283bd0bb2e3e84860",
+        "event_class": "institutional_event",
+        "protocol_version": "meta-circulation/0.5",
+        "status": "institutional_graph_probe",
+        "timestamp": "2026-08-12T05:08:00Z",
+        "institutional_state": "semantic_projection_experimental",
+        "execution_state": "office_role_topology_under_test",
+        "flow_state": "archivist_to_trace_to_graph",
+        "authority_state": "authorized_by_accountable_human",
+        "next_valid_action": "verify_office_role_projection",
+        "review_requirement": "deferred_to_daily_cycle",
+        "handoff_semantics": {
+          "continuity_worthy": true,
+          "next_agent_required": false,
+          "rediscovery_required": false,
+          "return_basis": "institutional_graph_projection"
+        },
+        "repo": "sovereign-codex/AVOT-ARCHIVIST"
+      }
+    },
+    {
+      "id": "trace:META-CIRCULATION-005__passed_through_workflow__workflow:archivist-ingest",
+      "source": "trace:META-CIRCULATION-005",
+      "target": "workflow:archivist-ingest",
+      "type": "passed_through_workflow",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "META-CIRCULATION-005",
+        "event_id": "8f8c156283bd0bb2e3e84860",
+        "event_class": "institutional_event",
+        "protocol_version": "meta-circulation/0.5",
+        "status": "institutional_graph_probe",
+        "timestamp": "2026-08-12T05:08:00Z",
+        "institutional_state": "semantic_projection_experimental",
+        "execution_state": "office_role_topology_under_test",
+        "flow_state": "archivist_to_trace_to_graph",
+        "authority_state": "authorized_by_accountable_human",
+        "next_valid_action": "verify_office_role_projection",
+        "review_requirement": "deferred_to_daily_cycle",
+        "handoff_semantics": {
+          "continuity_worthy": true,
+          "next_agent_required": false,
+          "rediscovery_required": false,
+          "return_basis": "institutional_graph_projection"
+        },
+        "repo": "sovereign-codex/AVOT-ARCHIVIST"
+      }
+    },
+    {
+      "id": "trace:META-CIRCULATION-005__emitted_by_role__role:Bootstrap Coordinator",
+      "source": "trace:META-CIRCULATION-005",
+      "target": "role:Bootstrap Coordinator",
+      "type": "emitted_by_role",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "META-CIRCULATION-005",
+        "event_id": "8f8c156283bd0bb2e3e84860",
+        "event_class": "institutional_event",
+        "protocol_version": "meta-circulation/0.5",
+        "status": "institutional_graph_probe",
+        "timestamp": "2026-08-12T05:08:00Z",
+        "institutional_state": "semantic_projection_experimental",
+        "execution_state": "office_role_topology_under_test",
+        "flow_state": "archivist_to_trace_to_graph",
+        "authority_state": "authorized_by_accountable_human",
+        "next_valid_action": "verify_office_role_projection",
+        "review_requirement": "deferred_to_daily_cycle",
+        "handoff_semantics": {
+          "continuity_worthy": true,
+          "next_agent_required": false,
+          "rediscovery_required": false,
+          "return_basis": "institutional_graph_projection"
+        }
+      }
+    },
+    {
+      "id": "trace:META-CIRCULATION-005__received_by_office__office:Office Incoming Inventory",
+      "source": "trace:META-CIRCULATION-005",
+      "target": "office:Office Incoming Inventory",
+      "type": "received_by_office",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "META-CIRCULATION-005",
+        "event_id": "8f8c156283bd0bb2e3e84860",
+        "event_class": "institutional_event",
+        "protocol_version": "meta-circulation/0.5",
+        "status": "institutional_graph_probe",
+        "timestamp": "2026-08-12T05:08:00Z",
+        "institutional_state": "semantic_projection_experimental",
+        "execution_state": "office_role_topology_under_test",
+        "flow_state": "archivist_to_trace_to_graph",
+        "authority_state": "authorized_by_accountable_human",
+        "next_valid_action": "verify_office_role_projection",
+        "review_requirement": "deferred_to_daily_cycle",
+        "handoff_semantics": {
+          "continuity_worthy": true,
+          "next_agent_required": false,
+          "rediscovery_required": false,
+          "return_basis": "institutional_graph_projection"
+        }
+      }
+    },
+    {
+      "id": "trace:META-CIRCULATION-005__has_review_role__role:Promotion Reviewer",
+      "source": "trace:META-CIRCULATION-005",
+      "target": "role:Promotion Reviewer",
+      "type": "has_review_role",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "META-CIRCULATION-005",
+        "event_id": "8f8c156283bd0bb2e3e84860",
+        "event_class": "institutional_event",
+        "protocol_version": "meta-circulation/0.5",
+        "status": "institutional_graph_probe",
+        "timestamp": "2026-08-12T05:08:00Z",
+        "institutional_state": "semantic_projection_experimental",
+        "execution_state": "office_role_topology_under_test",
+        "flow_state": "archivist_to_trace_to_graph",
+        "authority_state": "authorized_by_accountable_human",
+        "next_valid_action": "verify_office_role_projection",
+        "review_requirement": "deferred_to_daily_cycle",
+        "handoff_semantics": {
+          "continuity_worthy": true,
+          "next_agent_required": false,
+          "rediscovery_required": false,
+          "return_basis": "institutional_graph_projection"
+        }
+      }
+    },
+    {
       "id": "trace:engine_25258856233__observed_in_repo__repo:sovereign-codex/AVOT-ARCHIVIST",
       "source": "trace:engine_25258856233",
       "target": "repo:sovereign-codex/AVOT-ARCHIVIST",
@@ -104,8 +476,10 @@
       "weight": 1,
       "evidence": {
         "trace_id": "engine_25258856233",
+        "event_id": "25258858807-1-1777746638",
         "status": "started",
-        "timestamp": "2026-05-02T18:30:38Z"
+        "timestamp": "2026-05-02T18:30:38Z",
+        "repo": "sovereign-codex/AVOT-ARCHIVIST"
       }
     },
     {
@@ -116,9 +490,122 @@
       "weight": 1,
       "evidence": {
         "trace_id": "engine_25258856233",
-        "repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "event_id": "25258858807-1-1777746638",
         "status": "started",
-        "timestamp": "2026-05-02T18:30:38Z"
+        "timestamp": "2026-05-02T18:30:38Z",
+        "repo": "sovereign-codex/AVOT-ARCHIVIST"
+      }
+    },
+    {
+      "id": "trace:engine_25264526756__observed_in_repo__repo:sovereign-codex/AVOT-ARCHIVIST",
+      "source": "trace:engine_25264526756",
+      "target": "repo:sovereign-codex/AVOT-ARCHIVIST",
+      "type": "observed_in_repo",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "engine_25264526756",
+        "event_id": "25264530039-1-1777764471",
+        "status": "started",
+        "timestamp": "2026-05-02T23:27:51Z",
+        "repo": "sovereign-codex/AVOT-ARCHIVIST"
+      }
+    },
+    {
+      "id": "trace:engine_25264526756__passed_through_workflow__workflow:engine-runner",
+      "source": "trace:engine_25264526756",
+      "target": "workflow:engine-runner",
+      "type": "passed_through_workflow",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "engine_25264526756",
+        "event_id": "25264530039-1-1777764471",
+        "status": "started",
+        "timestamp": "2026-05-02T23:27:51Z",
+        "repo": "sovereign-codex/AVOT-ARCHIVIST"
+      }
+    },
+    {
+      "id": "trace:engine_25264564244__observed_in_repo__repo:sovereign-codex/AVOT-ARCHIVIST",
+      "source": "trace:engine_25264564244",
+      "target": "repo:sovereign-codex/AVOT-ARCHIVIST",
+      "type": "observed_in_repo",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "engine_25264564244",
+        "event_id": "25264566819-1-1777764569",
+        "status": "started",
+        "timestamp": "2026-05-02T23:29:29Z",
+        "repo": "sovereign-codex/AVOT-ARCHIVIST"
+      }
+    },
+    {
+      "id": "trace:engine_25264564244__passed_through_workflow__workflow:engine-runner",
+      "source": "trace:engine_25264564244",
+      "target": "workflow:engine-runner",
+      "type": "passed_through_workflow",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "engine_25264564244",
+        "event_id": "25264566819-1-1777764569",
+        "status": "started",
+        "timestamp": "2026-05-02T23:29:29Z",
+        "repo": "sovereign-codex/AVOT-ARCHIVIST"
+      }
+    },
+    {
+      "id": "trace:engine_25285171457__observed_in_repo__repo:sovereign-codex/AVOT-ARCHIVIST",
+      "source": "trace:engine_25285171457",
+      "target": "repo:sovereign-codex/AVOT-ARCHIVIST",
+      "type": "observed_in_repo",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "engine_25285171457",
+        "event_id": "25285174318-1-1777827472",
+        "status": "started",
+        "timestamp": "2026-05-03T16:57:52Z",
+        "repo": "sovereign-codex/AVOT-ARCHIVIST"
+      }
+    },
+    {
+      "id": "trace:engine_25285171457__passed_through_workflow__workflow:engine-runner",
+      "source": "trace:engine_25285171457",
+      "target": "workflow:engine-runner",
+      "type": "passed_through_workflow",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "engine_25285171457",
+        "event_id": "25285174318-1-1777827472",
+        "status": "started",
+        "timestamp": "2026-05-03T16:57:52Z",
+        "repo": "sovereign-codex/AVOT-ARCHIVIST"
+      }
+    },
+    {
+      "id": "trace:engine_31564894890__observed_in_repo__repo:sovereign-codex/AVOT-ARCHIVIST",
+      "source": "trace:engine_31564894890",
+      "target": "repo:sovereign-codex/AVOT-ARCHIVIST",
+      "type": "observed_in_repo",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "engine_31564894890",
+        "event_id": "d6a6e46e5054c8b2363f45eb",
+        "status": "started",
+        "timestamp": "2026-08-12T04:56:49Z",
+        "repo": "sovereign-codex/AVOT-ARCHIVIST"
+      }
+    },
+    {
+      "id": "trace:engine_31564894890__passed_through_workflow__workflow:engine-runner",
+      "source": "trace:engine_31564894890",
+      "target": "workflow:engine-runner",
+      "type": "passed_through_workflow",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "engine_31564894890",
+        "event_id": "d6a6e46e5054c8b2363f45eb",
+        "status": "started",
+        "timestamp": "2026-08-12T04:56:49Z",
+        "repo": "sovereign-codex/AVOT-ARCHIVIST"
       }
     },
     {
@@ -126,11 +613,13 @@
       "source": "trace:trc_control-center-test",
       "target": "repo:sovereign-codex/Codex-control-center",
       "type": "observed_in_repo",
-      "weight": 1,
+      "weight": 3,
       "evidence": {
         "trace_id": "trc_control-center-test",
+        "event_id": "25264117910-1-1777763118",
         "status": "result_stored",
-        "timestamp": "2026-05-02T23:05:18Z"
+        "timestamp": "2026-05-02T23:05:18Z",
+        "repo": "sovereign-codex/Codex-control-center"
       }
     },
     {
@@ -138,12 +627,13 @@
       "source": "trace:trc_control-center-test",
       "target": "workflow:control-center-result-receiver",
       "type": "passed_through_workflow",
-      "weight": 1,
+      "weight": 2,
       "evidence": {
         "trace_id": "trc_control-center-test",
-        "repo": "sovereign-codex/Codex-control-center",
+        "event_id": "25264117910-1-1777763118",
         "status": "result_stored",
-        "timestamp": "2026-05-02T23:05:18Z"
+        "timestamp": "2026-05-02T23:05:18Z",
+        "repo": "sovereign-codex/Codex-control-center"
       }
     },
     {
@@ -154,9 +644,10 @@
       "weight": 1,
       "evidence": {
         "trace_id": "trc_control-center-test",
-        "repo": "sovereign-codex/Codex-control-center",
+        "event_id": "25264112484-1-1777763098",
         "status": "dispatched",
-        "timestamp": "2026-05-02T23:04:58Z"
+        "timestamp": "2026-05-02T23:04:58Z",
+        "repo": "sovereign-codex/Codex-control-center"
       }
     },
     {
@@ -167,8 +658,10 @@
       "weight": 1,
       "evidence": {
         "trace_id": "trc_control-center-test",
+        "event_id": "25264114757-1-1777763107",
         "status": "engine_completed",
-        "timestamp": "2026-05-02T23:05:07Z"
+        "timestamp": "2026-05-02T23:05:07Z",
+        "repo": "sovereign-codex/AVOT-engine"
       }
     },
     {
@@ -179,9 +672,10 @@
       "weight": 1,
       "evidence": {
         "trace_id": "trc_control-center-test",
-        "repo": "sovereign-codex/AVOT-engine",
+        "event_id": "25264114757-1-1777763107",
         "status": "engine_completed",
-        "timestamp": "2026-05-02T23:05:07Z"
+        "timestamp": "2026-05-02T23:05:07Z",
+        "repo": "sovereign-codex/AVOT-engine"
       }
     },
     {
@@ -234,8 +728,10 @@
       "weight": 1,
       "evidence": {
         "trace_id": "trc_interlink-test",
+        "event_id": "25258861744-1-1777746647",
         "status": "decision_created:control-center",
-        "timestamp": "2026-05-02T18:30:47Z"
+        "timestamp": "2026-05-02T18:30:47Z",
+        "repo": "sovereign-codex/Codex-control-center"
       }
     },
     {
@@ -246,9 +742,38 @@
       "weight": 1,
       "evidence": {
         "trace_id": "trc_interlink-test",
-        "repo": "sovereign-codex/Codex-control-center",
+        "event_id": "25258861744-1-1777746647",
         "status": "decision_created:control-center",
-        "timestamp": "2026-05-02T18:30:47Z"
+        "timestamp": "2026-05-02T18:30:47Z",
+        "repo": "sovereign-codex/Codex-control-center"
+      }
+    },
+    {
+      "id": "trace:trc_research-quantum-mapping__observed_in_repo__repo:sovereign-codex/Codex-control-center",
+      "source": "trace:trc_research-quantum-mapping",
+      "target": "repo:sovereign-codex/Codex-control-center",
+      "type": "observed_in_repo",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "trc_research-quantum-mapping",
+        "event_id": "25264572590-1-1777764584",
+        "status": "decision_created:control-center",
+        "timestamp": "2026-05-02T23:29:44Z",
+        "repo": "sovereign-codex/Codex-control-center"
+      }
+    },
+    {
+      "id": "trace:trc_research-quantum-mapping__passed_through_workflow__workflow:control-center-router",
+      "source": "trace:trc_research-quantum-mapping",
+      "target": "workflow:control-center-router",
+      "type": "passed_through_workflow",
+      "weight": 1,
+      "evidence": {
+        "trace_id": "trc_research-quantum-mapping",
+        "event_id": "25264572590-1-1777764584",
+        "status": "decision_created:control-center",
+        "timestamp": "2026-05-02T23:29:44Z",
+        "repo": "sovereign-codex/Codex-control-center"
       }
     },
     {
@@ -256,11 +781,13 @@
       "source": "trace:trc_test-signal",
       "target": "repo:sovereign-codex/Codex-control-center",
       "type": "observed_in_repo",
-      "weight": 1,
+      "weight": 2,
       "evidence": {
         "trace_id": "trc_test-signal",
+        "event_id": "25264109702-1-1777763088",
         "status": "decision_created:avot-engine",
-        "timestamp": "2026-05-02T23:04:48Z"
+        "timestamp": "2026-05-02T23:04:48Z",
+        "repo": "sovereign-codex/Codex-control-center"
       }
     },
     {
@@ -271,9 +798,10 @@
       "weight": 1,
       "evidence": {
         "trace_id": "trc_test-signal",
-        "repo": "sovereign-codex/Codex-control-center",
+        "event_id": "25258876545-1-1777746687",
         "status": "result_stored",
-        "timestamp": "2026-05-02T18:31:27Z"
+        "timestamp": "2026-05-02T18:31:27Z",
+        "repo": "sovereign-codex/Codex-control-center"
       }
     },
     {
@@ -284,9 +812,10 @@
       "weight": 1,
       "evidence": {
         "trace_id": "trc_test-signal",
-        "repo": "sovereign-codex/Codex-control-center",
+        "event_id": "25264109702-1-1777763088",
         "status": "decision_created:avot-engine",
-        "timestamp": "2026-05-02T23:04:48Z"
+        "timestamp": "2026-05-02T23:04:48Z",
+        "repo": "sovereign-codex/Codex-control-center"
       }
     },
     {
@@ -297,8 +826,10 @@
       "weight": 1,
       "evidence": {
         "trace_id": "trc_test-signal",
+        "event_id": "25264119941-1-1777763134",
         "status": "result_sent",
-        "timestamp": "2026-05-02T23:05:34Z"
+        "timestamp": "2026-05-02T23:05:34Z",
+        "repo": "sovereign-codex/AVOT-engine"
       }
     },
     {
@@ -309,9 +840,10 @@
       "weight": 1,
       "evidence": {
         "trace_id": "trc_test-signal",
-        "repo": "sovereign-codex/AVOT-engine",
+        "event_id": "25264119941-1-1777763134",
         "status": "result_sent",
-        "timestamp": "2026-05-02T23:05:34Z"
+        "timestamp": "2026-05-02T23:05:34Z",
+        "repo": "sovereign-codex/AVOT-engine"
       }
     },
     {
@@ -350,8 +882,10 @@
       "weight": 1,
       "evidence": {
         "trace_id": "trc_test-trigger",
+        "event_id": "25258865417-1-1777746662",
         "status": "no_route_found",
-        "timestamp": "2026-05-02T18:31:02Z"
+        "timestamp": "2026-05-02T18:31:02Z",
+        "repo": "sovereign-codex/Codex-control-center"
       }
     },
     {
@@ -362,9 +896,66 @@
       "weight": 1,
       "evidence": {
         "trace_id": "trc_test-trigger",
-        "repo": "sovereign-codex/Codex-control-center",
+        "event_id": "25258865417-1-1777746662",
         "status": "no_route_found",
-        "timestamp": "2026-05-02T18:31:02Z"
+        "timestamp": "2026-05-02T18:31:02Z",
+        "repo": "sovereign-codex/Codex-control-center"
+      }
+    },
+    {
+      "id": "trace:trc_test-trigger__observed_in_repo__repo:sovereign-codex/AVOT-ARCHIVIST",
+      "source": "trace:trc_test-trigger",
+      "target": "repo:sovereign-codex/AVOT-ARCHIVIST",
+      "type": "observed_in_repo",
+      "weight": 2,
+      "evidence": {
+        "trace_id": "trc_test-trigger",
+        "event_id": "2f950dd177a885382ea9112c",
+        "status": "normalized",
+        "timestamp": "2026-08-12T04:57:02Z",
+        "repo": "sovereign-codex/AVOT-ARCHIVIST"
+      }
+    },
+    {
+      "id": "trace:trc_test-trigger__passed_through_workflow__workflow:engine-runner",
+      "source": "trace:trc_test-trigger",
+      "target": "workflow:engine-runner",
+      "type": "passed_through_workflow",
+      "weight": 2,
+      "evidence": {
+        "trace_id": "trc_test-trigger",
+        "event_id": "2f950dd177a885382ea9112c",
+        "status": "normalized",
+        "timestamp": "2026-08-12T04:57:02Z",
+        "repo": "sovereign-codex/AVOT-ARCHIVIST"
+      }
+    },
+    {
+      "id": "workflow:cross-repo-dispatcher__chained__workflow:engine-runner",
+      "source": "workflow:cross-repo-dispatcher",
+      "target": "workflow:engine-runner",
+      "type": "chained",
+      "weight": 2,
+      "evidence": {
+        "trace_id": "trc_test-trigger",
+        "from_status": "no_route_found",
+        "to_status": "handoff_sent",
+        "from_timestamp": "2026-05-02T18:31:02Z",
+        "to_timestamp": "2026-08-12T04:52:16Z"
+      }
+    },
+    {
+      "id": "workflow:engine-runner__retry__workflow:engine-runner",
+      "source": "workflow:engine-runner",
+      "target": "workflow:engine-runner",
+      "type": "retry",
+      "weight": 2,
+      "evidence": {
+        "trace_id": "trc_test-trigger",
+        "from_status": "handoff_sent",
+        "to_status": "normalized",
+        "from_timestamp": "2026-08-12T04:52:16Z",
+        "to_timestamp": "2026-08-12T04:57:02Z"
       }
     }
   ]

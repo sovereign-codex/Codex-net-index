@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-12T04:24:12Z",
+  "generated_at": "2026-08-12T05:58:22Z",
   "schema": "codex.relationships.v1",
   "relationships": [
     {
@@ -99,6 +99,46 @@
         "to_status": "result_sent",
         "from_timestamp": "2026-05-02T23:04:48Z",
         "to_timestamp": "2026-05-02T23:05:34Z"
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "causal_trc_test-trigger_cross-repo-dispatcher_engine-runner",
+      "type": "chained",
+      "from": {
+        "kind": "workflow",
+        "id": "cross-repo-dispatcher"
+      },
+      "to": {
+        "kind": "workflow",
+        "id": "engine-runner"
+      },
+      "evidence": {
+        "trace_id": "trc_test-trigger",
+        "from_status": "no_route_found",
+        "to_status": "handoff_sent",
+        "from_timestamp": "2026-05-02T18:31:02Z",
+        "to_timestamp": "2026-08-12T04:52:16Z"
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "causal_trc_test-trigger_engine-runner_engine-runner",
+      "type": "retry",
+      "from": {
+        "kind": "workflow",
+        "id": "engine-runner"
+      },
+      "to": {
+        "kind": "workflow",
+        "id": "engine-runner"
+      },
+      "evidence": {
+        "trace_id": "trc_test-trigger",
+        "from_status": "handoff_sent",
+        "to_status": "normalized",
+        "from_timestamp": "2026-08-12T04:52:16Z",
+        "to_timestamp": "2026-08-12T04:57:02Z"
       },
       "confidence": 0.85
     }
