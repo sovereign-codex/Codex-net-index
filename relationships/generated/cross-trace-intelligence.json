@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-12T04:28:50Z",
+  "generated_at": "2026-08-12T13:49:07Z",
   "schema": "codex.relationships.v2",
   "relationships": [
     {
@@ -43,22 +43,22 @@
       "confidence": 0.6
     },
     {
-      "id": "rel_trc_interlink-test__same_execution_family__trc_test-trigger",
+      "id": "rel_engine_25258856233__same_execution_family__engine_25264526756",
       "type": "same_execution_family",
       "from": {
         "kind": "trace",
-        "id": "trc_interlink-test"
+        "id": "engine_25258856233"
       },
       "to": {
         "kind": "trace",
-        "id": "trc_test-trigger"
+        "id": "engine_25264526756"
       },
       "evidence": {
-        "time_delta": 15.0,
-        "a_status": "decision_created:control-center",
-        "b_status": "no_route_found",
-        "a_repo": "sovereign-codex/Codex-control-center",
-        "b_repo": "sovereign-codex/Codex-control-center"
+        "time_delta": 17833.0,
+        "a_status": "started",
+        "b_status": "started",
+        "a_repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "b_repo": "sovereign-codex/AVOT-ARCHIVIST"
       },
       "confidence": 0.6
     },
@@ -83,27 +83,447 @@
       "confidence": 0.6
     },
     {
-      "id": "rel_trc_test-trigger__likely_triggered__trc_control-center-test",
-      "type": "likely_triggered",
+      "id": "rel_trc_interlink-test__same_execution_family__trc_research-quantum-mapping",
+      "type": "same_execution_family",
       "from": {
         "kind": "trace",
-        "id": "trc_test-trigger"
+        "id": "trc_interlink-test"
       },
       "to": {
         "kind": "trace",
-        "id": "trc_control-center-test"
+        "id": "trc_research quantum mapping"
       },
       "evidence": {
-        "time_delta": 16456.0,
-        "a_status": "no_route_found",
-        "b_status": "result_stored",
+        "time_delta": 17840.0,
+        "a_status": "decision_created:control-center",
+        "b_status": "decision_created:control-center",
         "a_repo": "sovereign-codex/Codex-control-center",
         "b_repo": "sovereign-codex/Codex-control-center"
       },
-      "confidence": 0.85
+      "confidence": 0.6
     },
     {
-      "id": "rel_trc_test-trigger__same_execution_family__trc_control-center-test",
+      "id": "rel_trc_control-center-test__same_execution_family__engine_25264526756",
+      "type": "same_execution_family",
+      "from": {
+        "kind": "trace",
+        "id": "trc_control center test"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "engine_25264526756"
+      },
+      "evidence": {
+        "time_delta": 1393.0,
+        "a_status": "normalized",
+        "b_status": "started",
+        "a_repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "b_repo": "sovereign-codex/AVOT-ARCHIVIST"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "rel_trc_control-center-test__same_execution_family__engine_25264564244",
+      "type": "same_execution_family",
+      "from": {
+        "kind": "trace",
+        "id": "trc_control center test"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "engine_25264564244"
+      },
+      "evidence": {
+        "time_delta": 1491.0,
+        "a_status": "normalized",
+        "b_status": "started",
+        "a_repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "b_repo": "sovereign-codex/AVOT-ARCHIVIST"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "rel_trc_control-center-test__same_execution_family__trc_research-quantum-mapping",
+      "type": "same_execution_family",
+      "from": {
+        "kind": "trace",
+        "id": "trc_control-center-test"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "trc_research quantum mapping"
+      },
+      "evidence": {
+        "time_delta": 1369.0,
+        "a_status": "result_stored",
+        "b_status": "decision_created:control-center",
+        "a_repo": "sovereign-codex/Codex-control-center",
+        "b_repo": "sovereign-codex/Codex-control-center"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "rel_trc_control-center-test__same_execution_family__trc_research-quantum-mapping",
+      "type": "same_execution_family",
+      "from": {
+        "kind": "trace",
+        "id": "trc_control-center-test"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "trc_research-quantum-mapping"
+      },
+      "evidence": {
+        "time_delta": 1466.0,
+        "a_status": "result_stored",
+        "b_status": "decision_created:control-center",
+        "a_repo": "sovereign-codex/Codex-control-center",
+        "b_repo": "sovereign-codex/Codex-control-center"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "rel_engine_25264526756__same_execution_family__engine_25264564244",
+      "type": "same_execution_family",
+      "from": {
+        "kind": "trace",
+        "id": "engine_25264526756"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "engine_25264564244"
+      },
+      "evidence": {
+        "time_delta": 98.0,
+        "a_status": "started",
+        "b_status": "started",
+        "a_repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "b_repo": "sovereign-codex/AVOT-ARCHIVIST"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "rel_engine_25264526756__same_execution_family__engine_25285171457",
+      "type": "same_execution_family",
+      "from": {
+        "kind": "trace",
+        "id": "engine_25264526756"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "engine_25285171457"
+      },
+      "evidence": {
+        "time_delta": 63001.0,
+        "a_status": "started",
+        "b_status": "started",
+        "a_repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "b_repo": "sovereign-codex/AVOT-ARCHIVIST"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "rel_engine_25264526756__same_execution_family__meta-circulation-004",
+      "type": "same_execution_family",
+      "from": {
+        "kind": "trace",
+        "id": "engine_25264526756"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "META-CIRCULATION-004"
+      },
+      "evidence": {
+        "time_delta": 8745849.0,
+        "a_status": "started",
+        "b_status": "downstream_continuity_probe",
+        "a_repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "b_repo": "sovereign-codex/AVOT-ARCHIVIST"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "rel_trc_research-quantum-mapping__same_execution_family__trc_research-quantum-mapping",
+      "type": "same_execution_family",
+      "from": {
+        "kind": "trace",
+        "id": "trc_research quantum mapping"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "trc_research-quantum-mapping"
+      },
+      "evidence": {
+        "time_delta": 97.0,
+        "a_status": "decision_created:control-center",
+        "b_status": "decision_created:control-center",
+        "a_repo": "sovereign-codex/Codex-control-center",
+        "b_repo": "sovereign-codex/Codex-control-center"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "rel_engine_25264564244__same_execution_family__engine_25285171457",
+      "type": "same_execution_family",
+      "from": {
+        "kind": "trace",
+        "id": "engine_25264564244"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "engine_25285171457"
+      },
+      "evidence": {
+        "time_delta": 62903.0,
+        "a_status": "started",
+        "b_status": "started",
+        "a_repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "b_repo": "sovereign-codex/AVOT-ARCHIVIST"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "rel_engine_25264564244__same_execution_family__meta-circulation-004",
+      "type": "same_execution_family",
+      "from": {
+        "kind": "trace",
+        "id": "engine_25264564244"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "META-CIRCULATION-004"
+      },
+      "evidence": {
+        "time_delta": 8745751.0,
+        "a_status": "started",
+        "b_status": "downstream_continuity_probe",
+        "a_repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "b_repo": "sovereign-codex/AVOT-ARCHIVIST"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "rel_engine_25264564244__same_execution_family__engine_31564894890",
+      "type": "same_execution_family",
+      "from": {
+        "kind": "trace",
+        "id": "engine_25264564244"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "engine_31564894890"
+      },
+      "evidence": {
+        "time_delta": 8746040.0,
+        "a_status": "started",
+        "b_status": "started",
+        "a_repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "b_repo": "sovereign-codex/AVOT-ARCHIVIST"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "rel_engine_25264564244__same_execution_family__trc_test-trigger",
+      "type": "same_execution_family",
+      "from": {
+        "kind": "trace",
+        "id": "engine_25264564244"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "trc_test-trigger"
+      },
+      "evidence": {
+        "time_delta": 8746053.0,
+        "a_status": "started",
+        "b_status": "normalized",
+        "a_repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "b_repo": "sovereign-codex/AVOT-ARCHIVIST"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "rel_engine_25285171457__same_execution_family__meta-circulation-004",
+      "type": "same_execution_family",
+      "from": {
+        "kind": "trace",
+        "id": "engine_25285171457"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "META-CIRCULATION-004"
+      },
+      "evidence": {
+        "time_delta": 8682848.0,
+        "a_status": "started",
+        "b_status": "downstream_continuity_probe",
+        "a_repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "b_repo": "sovereign-codex/AVOT-ARCHIVIST"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "rel_engine_25285171457__same_execution_family__engine_31564894890",
+      "type": "same_execution_family",
+      "from": {
+        "kind": "trace",
+        "id": "engine_25285171457"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "engine_31564894890"
+      },
+      "evidence": {
+        "time_delta": 8683137.0,
+        "a_status": "started",
+        "b_status": "started",
+        "a_repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "b_repo": "sovereign-codex/AVOT-ARCHIVIST"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "rel_engine_25285171457__same_execution_family__trc_test-trigger",
+      "type": "same_execution_family",
+      "from": {
+        "kind": "trace",
+        "id": "engine_25285171457"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "trc_test-trigger"
+      },
+      "evidence": {
+        "time_delta": 8683150.0,
+        "a_status": "started",
+        "b_status": "normalized",
+        "a_repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "b_repo": "sovereign-codex/AVOT-ARCHIVIST"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "rel_engine_25285171457__same_execution_family__meta-circulation-005",
+      "type": "same_execution_family",
+      "from": {
+        "kind": "trace",
+        "id": "engine_25285171457"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "META-CIRCULATION-005"
+      },
+      "evidence": {
+        "time_delta": 8683808.0,
+        "a_status": "started",
+        "b_status": "institutional_graph_probe",
+        "a_repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "b_repo": "sovereign-codex/AVOT-ARCHIVIST"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "rel_meta-circulation-004__same_execution_family__engine_31564894890",
+      "type": "same_execution_family",
+      "from": {
+        "kind": "trace",
+        "id": "META-CIRCULATION-004"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "engine_31564894890"
+      },
+      "evidence": {
+        "time_delta": 289.0,
+        "a_status": "downstream_continuity_probe",
+        "b_status": "started",
+        "a_repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "b_repo": "sovereign-codex/AVOT-ARCHIVIST"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "rel_meta-circulation-004__same_execution_family__trc_test-trigger",
+      "type": "same_execution_family",
+      "from": {
+        "kind": "trace",
+        "id": "META-CIRCULATION-004"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "trc_test-trigger"
+      },
+      "evidence": {
+        "time_delta": 302.0,
+        "a_status": "downstream_continuity_probe",
+        "b_status": "normalized",
+        "a_repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "b_repo": "sovereign-codex/AVOT-ARCHIVIST"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "rel_meta-circulation-004__same_execution_family__meta-circulation-005",
+      "type": "same_execution_family",
+      "from": {
+        "kind": "trace",
+        "id": "META-CIRCULATION-004"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "META-CIRCULATION-005"
+      },
+      "evidence": {
+        "time_delta": 960.0,
+        "a_status": "downstream_continuity_probe",
+        "b_status": "institutional_graph_probe",
+        "a_repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "b_repo": "sovereign-codex/AVOT-ARCHIVIST"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "rel_engine_31564894890__same_execution_family__trc_test-trigger",
+      "type": "same_execution_family",
+      "from": {
+        "kind": "trace",
+        "id": "engine_31564894890"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "trc_test-trigger"
+      },
+      "evidence": {
+        "time_delta": 13.0,
+        "a_status": "started",
+        "b_status": "normalized",
+        "a_repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "b_repo": "sovereign-codex/AVOT-ARCHIVIST"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "rel_engine_31564894890__same_execution_family__meta-circulation-005",
+      "type": "same_execution_family",
+      "from": {
+        "kind": "trace",
+        "id": "engine_31564894890"
+      },
+      "to": {
+        "kind": "trace",
+        "id": "META-CIRCULATION-005"
+      },
+      "evidence": {
+        "time_delta": 671.0,
+        "a_status": "started",
+        "b_status": "institutional_graph_probe",
+        "a_repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "b_repo": "sovereign-codex/AVOT-ARCHIVIST"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "rel_trc_test-trigger__same_execution_family__meta-circulation-005",
       "type": "same_execution_family",
       "from": {
         "kind": "trace",
@@ -111,36 +531,16 @@
       },
       "to": {
         "kind": "trace",
-        "id": "trc_control-center-test"
+        "id": "META-CIRCULATION-005"
       },
       "evidence": {
-        "time_delta": 16456.0,
-        "a_status": "no_route_found",
-        "b_status": "result_stored",
-        "a_repo": "sovereign-codex/Codex-control-center",
-        "b_repo": "sovereign-codex/Codex-control-center"
+        "time_delta": 658.0,
+        "a_status": "normalized",
+        "b_status": "institutional_graph_probe",
+        "a_repo": "sovereign-codex/AVOT-ARCHIVIST",
+        "b_repo": "sovereign-codex/AVOT-ARCHIVIST"
       },
       "confidence": 0.6
-    },
-    {
-      "id": "rel_trc_test-trigger__likely_triggered__trc_test-signal",
-      "type": "likely_triggered",
-      "from": {
-        "kind": "trace",
-        "id": "trc_test-trigger"
-      },
-      "to": {
-        "kind": "trace",
-        "id": "trc_test-signal"
-      },
-      "evidence": {
-        "time_delta": 16472.0,
-        "a_status": "no_route_found",
-        "b_status": "result_sent",
-        "a_repo": "sovereign-codex/Codex-control-center",
-        "b_repo": "sovereign-codex/AVOT-engine"
-      },
-      "confidence": 0.85
     }
   ]
 }
