@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-17T19:06:00Z",
+  "generated_at": "2026-09-17T22:12:15Z",
   "schema": "codex.node_reliability.v1",
   "nodes": [
     {
@@ -60,7 +60,7 @@
       "score": 100,
       "successes": 0,
       "failures": 0,
-      "events": 2
+      "events": 3
     }
   ]
 }
