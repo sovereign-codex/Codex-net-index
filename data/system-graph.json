@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-17T15:14:50Z",
+  "generated_at": "2026-09-17T19:06:00Z",
   "schema": "codex.system_graph.v1.1-experimental",
   "source": "AVOT-TRACE",
   "semantic_projection": {
@@ -127,7 +127,7 @@
       "kind": "repo",
       "id": "sovereign-codex/Codex-control-center",
       "label": "sovereign-codex/Codex-control-center",
-      "weight": 8
+      "weight": 7
     },
     {
       "key": "workflow:control-center-result-receiver",
@@ -158,10 +158,10 @@
       "weight": 5
     },
     {
-      "key": "trace:trc_interlink-test",
+      "key": "trace:trc_research-quantum-mapping",
       "kind": "trace",
-      "id": "trc_interlink-test",
-      "label": "trc_interlink-test",
+      "id": "trc_research-quantum-mapping",
+      "label": "trc_research-quantum-mapping",
       "weight": 1
     },
     {
@@ -169,14 +169,7 @@
       "kind": "workflow",
       "id": "control-center-router",
       "label": "control-center-router",
-      "weight": 5
-    },
-    {
-      "key": "trace:trc_research-quantum-mapping",
-      "kind": "trace",
-      "id": "trc_research-quantum-mapping",
-      "label": "trc_research-quantum-mapping",
-      "weight": 1
+      "weight": 4
     },
     {
       "key": "trace:trc_test-signal",
@@ -718,34 +711,6 @@
         "to_status": "result_stored",
         "from_timestamp": "2026-05-02T23:05:07Z",
         "to_timestamp": "2026-05-02T23:05:18Z"
-      }
-    },
-    {
-      "id": "trace:trc_interlink-test__observed_in_repo__repo:sovereign-codex/Codex-control-center",
-      "source": "trace:trc_interlink-test",
-      "target": "repo:sovereign-codex/Codex-control-center",
-      "type": "observed_in_repo",
-      "weight": 1,
-      "evidence": {
-        "trace_id": "trc_interlink-test",
-        "event_id": "25258861744-1-1777746647",
-        "status": "decision_created:control-center",
-        "timestamp": "2026-05-02T18:30:47Z",
-        "repo": "sovereign-codex/Codex-control-center"
-      }
-    },
-    {
-      "id": "trace:trc_interlink-test__passed_through_workflow__workflow:control-center-router",
-      "source": "trace:trc_interlink-test",
-      "target": "workflow:control-center-router",
-      "type": "passed_through_workflow",
-      "weight": 1,
-      "evidence": {
-        "trace_id": "trc_interlink-test",
-        "event_id": "25258861744-1-1777746647",
-        "status": "decision_created:control-center",
-        "timestamp": "2026-05-02T18:30:47Z",
-        "repo": "sovereign-codex/Codex-control-center"
       }
     },
     {
